@@ -3,1584 +3,639 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GlobalSwift | Worldwide Express Delivery</title>
+  <title>Ekeoha Miracle Chidindu | Electrical Engineering Portfolio</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <script>
     tailwind.config = {
+      darkMode: 'class',
       theme: {
         extend: {
           colors: {
-            'primary': '#1e3a8a',
-            'secondary': '#3b82f6',
-            'accent': '#8b5cf6',
-            'dark': '#0f172a',
-            'light': '#f8fafc',
-            'success': '#10b981',
-            'warning': '#f59e0b',
-            'danger': '#ef4444',
-            'global-blue': '#0c4da2',
-            'global-teal': '#0e7490'
-          },
-          animation: {
-            'float': 'float 6s ease-in-out infinite',
-            'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-            'slide-up': 'slide-up 0.5s ease-out forwards',
-            'orbit': 'orbit 30s linear infinite'
-          },
-          keyframes: {
-            'float': {
-              '0%, 100%': { transform: 'translateY(0)' },
-              '50%': { transform: 'translateY(-10px)' }
-            },
-            'slide-up': {
-              '0%': { opacity: '0', transform: 'translateY(20px)' },
-              '100%': { opacity: '1', transform: 'translateY(0)' }
-            },
-            'orbit': {
-              '0%': { transform: 'rotate(0deg) translateX(100px) rotate(0deg)' },
-              '100%': { transform: 'rotate(360deg) translateX(100px) rotate(-360deg)' }
-            }
+            'dark-bg': '#0a0a0a',
+            'card-bg': '#121212',
+            'border-dark': '#2d2d2d',
+            'text-primary': '#ffffff',
+            'text-secondary': '#b0b0b0',
+            'accent-blue': '#3b82f6',
+            'accent-purple': '#8b5cf6',
+            'accent-cyan': '#06b6d4',
+            'accent-yellow': '#f59e0b',
+            'skill-bar': '#1e40af',
+            'project-hover': '#1e293b'
           }
         }
       }
     }
   </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
   <style>
-    * {
-      scroll-behavior: smooth;
-    }
-    
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-      background: linear-gradient(135deg, #f0f9ff 0%, #eff6ff 100%);
-      color: #1e293b;
+      scroll-behavior: smooth;
+      background-color: #0a0a0a;
+      color: #ffffff;
     }
-    
     .hero-bg {
-      background: radial-gradient(circle at center, #0c4da2 0%, #0a2e6d 70%);
-      clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
-      position: relative;
-      overflow: hidden;
+      background: linear-gradient(90deg, rgba(59, 130, 246, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
     }
-    
-    .globe-container {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 400px;
-      height: 400px;
-      opacity: 0.1;
+    .about-bg {
+      background: linear-gradient(135deg, rgba(30, 41, 59, 0.3) 0%, rgba(22, 22, 22, 0.7) 100%);
     }
-    
-    .globe {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 300px;
-      height: 300px;
-      border-radius: 50%;
-      background: radial-gradient(circle, #3b82f6 0%, #0c4da2 70%, #0a2e6d 100%);
-      transform: translate(-50%, -50%);
-      box-shadow: 0 0 50px rgba(59, 130, 246, 0.5);
+    .skills-bg {
+      background: linear-gradient(135deg, rgba(17, 17, 17, 0.9) 0%, rgba(10, 10, 10, 0.95) 100%);
     }
-    
-    .orbit {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 350px;
-      height: 350px;
-      border: 2px solid rgba(255, 255, 255, 0.2);
-      border-radius: 50%;
-      transform: translate(-50%, -50%);
+    .education-bg {
+      background: linear-gradient(135deg, rgba(17, 17, 17, 0.8) 0%, rgba(12, 12, 12, 0.9) 100%);
     }
-    
-    .satellite {
-      position: absolute;
-      width: 12px;
-      height: 12px;
-      background: #3b82f6;
-      border-radius: 50%;
-      box-shadow: 0 0 10px #3b82f6;
-      animation: orbit 30s linear infinite;
+    .contact-bg {
+      background: linear-gradient(90deg, #0f172a, #1e293b, #0f172a);
+      border-top: 1px solid #2d2d2d;
     }
-    
-    .card-hover {
-      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    }
-    
-    .card-hover:hover {
-      transform: translateY(-10px) scale(1.03);
-      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-    }
-    
-    .feature-card {
-      background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(240, 249, 255, 0.9) 100%);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(30, 58, 138, 0.2);
-    }
-    
-    .stat-card {
-      background: linear-gradient(135deg, rgba(255,255,255,0.85) 0%, rgba(243, 244, 246, 0.85) 100%);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(226, 232, 240, 0.6);
-    }
-    
-    .world-badge {
-      animation: pulse 2s infinite;
-      box-shadow: 0 0 0 0 rgba(12, 77, 162, 0.7);
-    }
-    
-    @keyframes pulse {
-      0% { box-shadow: 0 0 0 0 rgba(12, 77, 162, 0.7); }
-      70% { box-shadow: 0 0 0 12px rgba(12, 77, 162, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(12, 77, 162, 0); }
-    }
-    
-    .glow-button {
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .glow-button::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 70%);
-      transform: scale(0);
-      transition: transform 0.5s ease-out;
-      z-index: 0;
-    }
-    
-    .glow-button:hover::before {
-      transform: scale(1);
-    }
-    
-    .glow-button span {
-      position: relative;
-      z-index: 1;
-    }
-    
-    .testimonial-card {
-      background: linear-gradient(135deg, rgba(255,255,255,0.8) 0%, rgba(240, 249, 255, 0.8) 100%);
-      border-left: 4px solid #1e3a8a;
-    }
-    
-    .map-container {
-      background: linear-gradient(135deg, #0c4da2 0%, #0a2e6d 100%);
-      border-radius: 24px;
-      overflow: hidden;
+    .skill-bar {
+      transition: width 1.5s ease-out !important;
       position: relative;
     }
-    
-    .world-map {
-      position: absolute;
-      inset: 0;
-      background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/World_map_-_low_resolution.svg/1200px-World_map_-_low_resolution.svg.png') center/cover no-repeat;
-      opacity: 0.2;
-    }
-    
-    .route-line {
-      position: absolute;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, #3b82f6, transparent);
-      animation: route-pulse 3s infinite;
-    }
-    
-    @keyframes route-pulse {
-      0% { opacity: 0.3; }
-      50% { opacity: 1; }
-      100% { opacity: 0.3; }
-    }
-    
-    .route-point {
-      position: absolute;
-      width: 12px;
-      height: 12px;
-      background: #3b82f6;
-      border-radius: 50%;
-      box-shadow: 0 0 10px #3b82f6;
-      animation: pulse 2s infinite;
-    }
-    
-    .section-title {
-      position: relative;
-      display: inline-block;
-    }
-    
-    .section-title::after {
-      content: '';
-      position: absolute;
-      bottom: -8px;
-      left: 0;
-      width: 60px;
-      height: 4px;
-      background: linear-gradient(90deg, #1e3a8a, #3b82f6);
-      border-radius: 2px;
-    }
-    
-    .price-card {
-      background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(240, 249, 255, 0.9) 100%);
-      transition: all 0.4s ease;
-      border: 2px solid transparent;
-      background-clip: padding-box;
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .price-card::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(45deg, #1e3a8a, #3b82f6, #8b5cf6, #1e3a8a);
-      z-index: -1;
-      padding: 2px;
-      border-radius: 20px;
-      background-clip: content-box;
-      -webkit-mask: 
-        linear-gradient(#fff 0 0) content-box, 
-        linear-gradient(#fff 0 0);
-      mask: 
-        linear-gradient(#fff 0 0) content-box, 
-        linear-gradient(#fff 0 0);
-      -webkit-mask-composite: xor;
-      mask-composite: exclude;
-    }
-    
-    .price-card.popular {
+    .project-card:hover .project-image {
       transform: scale(1.05);
-      z-index: 10;
     }
-    
-    .price-card:hover {
-      transform: translateY(-5px);
+    .floating-badge {
+      animation: pulse 2s infinite;
     }
-    
-    .step-card {
-      background: linear-gradient(135deg, rgba(255,255,255,0.8) 0%, rgba(240, 249, 255, 0.8) 100%);
-      border: 1px solid rgba(30, 58, 138, 0.2);
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7); }
+      70% { box-shadow: 0 0 0 10px rgba(245, 158, 11, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0); }
     }
-    
-    .step-number {
-      background: linear-gradient(135deg, #1e3a8a, #3b82f6);
-      width: 40px;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      color: white;
-      font-weight: bold;
-      font-size: 1.25rem;
-      box-shadow: 0 4px 10px rgba(30, 58, 138, 0.4);
+    .grid-pattern {
+      background-image: radial-gradient(rgb(59, 130, 246, 0.15) 1px, transparent 1px);
+      background-size: 20px 20px;
     }
-    
-    .country-flag {
-      display: inline-block;
-      width: 24px;
-      height: 16px;
-      background-size: cover;
-      margin-right: 8px;
-      border-radius: 2px;
-      border: 1px solid rgba(0,0,0,0.1);
+    .contact-card {
+      transition: all 0.3s ease;
+      border: 1px solid #2d2d2d;
     }
-    
-    .timeline-item {
-      position: relative;
-      padding-left: 32px;
-      margin-bottom: 24px;
+    .contact-card:hover {
+      border-color: #3b82f6;
+      transform: translateY(-2px);
     }
-    
-    .timeline-item::before {
-      content: '';
-      position: absolute;
-      left: 8px;
-      top: 12px;
-      width: 16px;
-      height: 16px;
-      border-radius: 50%;
-      background: #1e3a8a;
-      border: 3px solid #3b82f6;
+    .whatsapp-btn {
+      background: linear-gradient(90deg, #128C7E, #075E54);
     }
-    
-    .timeline-item::after {
-      content: '';
-      position: absolute;
-      left: 15px;
-      top: 28px;
-      bottom: -16px;
-      width: 2px;
-      background: #cbd5e1;
+    .email-btn {
+      background: linear-gradient(90deg, #0078D4, #005A9E);
     }
-    
-    .timeline-item:last-child::after {
-      display: none;
+    .linkedin-btn {
+      background: linear-gradient(90deg, #0A66C2, #004182);
     }
-    
-    .coverage-badge {
-      position: relative;
-      overflow: hidden;
-      border-radius: 9999px;
-    }
-    
-    .coverage-badge::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(45deg, #1e3a8a 0%, #3b82f6 50%, #1e3a8a 100%);
-      transform: translateX(-100%);
-      transition: transform 0.5s ease-in-out;
-    }
-    
-    .coverage-badge:hover::before {
-      transform: translateX(100%);
-    }
-    
-    .coverage-badge span {
-      position: relative;
-      z-index: 1;
-    }
-    
-    .world-network {
-      position: relative;
-      height: 500px;
-      background: radial-gradient(circle at center, #0c4da2 0%, #0a2e6d 100%);
-      border-radius: 24px;
-      overflow: hidden;
-    }
-    
-    .network-node {
-      position: absolute;
-      width: 12px;
-      height: 12px;
-      background: #3b82f6;
-      border-radius: 50%;
-      box-shadow: 0 0 15px #3b82f6;
-    }
-    
-    .network-line {
-      position: absolute;
-      height: 1px;
-      background: rgba(255, 255, 255, 0.2);
-      transform-origin: 0 0;
+    .github-btn {
+      background: linear-gradient(90deg, #171515, #241f1f);
     }
   </style>
 </head>
-<body class="min-h-screen">
-  <!-- Navigation -->
-  <nav class="fixed w-full bg-white/80 backdrop-blur-md z-50 shadow-sm py-3 px-4 md:px-8">
-    <div class="max-w-7xl mx-auto flex justify-between items-center">
-      <a href="#" class="flex items-center space-x-3">
-        <div class="bg-gradient-to-r from-global-blue to-global-teal p-2 rounded-xl">
-          <i class="fas fa-globe-americas text-white text-2xl"></i>
+<body class="bg-dark-bg text-text-primary min-h-screen">
+  
+  <!-- Header -->
+  <header class="bg-black/80 backdrop-blur-md shadow-lg sticky top-0 z-50 border-b border-border-dark">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center py-4">
+        <div class="flex items-center space-x-4">
+          <div class="w-12 h-12 bg-gradient-to-br from-accent-blue to-accent-purple rounded-xl flex items-center justify-center shadow-lg">
+            <i data-lucide="graduation-cap" class="w-7 h-7 text-white"></i>
+          </div>
+          <div>
+            <h1 class="text-xl font-bold text-text-primary">Ekeoha Miracle Chidindu</h1>
+            <p class="text-sm text-accent-blue">Electrical Engineering Student | ND2</p>
+          </div>
         </div>
-        <span class="text-xl font-bold bg-gradient-to-r from-global-blue to-global-teal bg-clip-text text-transparent">GlobalSwift</span>
-      </a>
-      <div class="hidden md:flex items-center space-x-10">
-        <a href="#how-it-works" class="font-medium hover:text-global-blue transition-colors">How It Works</a>
-        <a href="#services" class="font-medium hover:text-global-blue transition-colors">Services</a>
-        <a href="#coverage" class="font-medium hover:text-global-blue transition-colors">Coverage</a>
-        <a href="#track" class="font-medium hover:text-global-blue transition-colors">Track Shipment</a>
-        <a href="#locations" class="font-medium hover:text-global-blue transition-colors">Locations</a>
-      </div>
-      <div class="flex items-center space-x-4">
-        <div class="relative">
-          <select class="appearance-none bg-white border border-gray-300 rounded-xl px-4 py-2 pr-8 focus:outline-none focus:ring-2 focus:ring-global-blue focus:border-transparent">
-            <option>USD $</option>
-            <option>EUR €</option>
-            <option>GBP £</option>
-            <option>JPY ¥</option>
-            <option>CAD $</option>
-            <option>AUD $</option>
-            <option>NGN ₦</option>
-          </select>
-          <i class="fas fa-globe absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500"></i>
-        </div>
-        <button class="bg-gradient-to-r from-global-blue to-global-teal text-white px-6 py-3 rounded-xl font-bold hover:opacity-90 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
-          Ship Now
-        </button>
+        <nav class="hidden md:flex space-x-8">
+          <a href="#about" class="text-text-secondary hover:text-accent-cyan font-medium transition-colors duration-200">About</a>
+          <a href="#skills" class="text-text-secondary hover:text-accent-cyan font-medium transition-colors duration-200">Skills</a>
+          <a href="#projects" class="text-text-secondary hover:text-accent-cyan font-medium transition-colors duration-200">Projects</a>
+          <a href="#education" class="text-text-secondary hover:text-accent-cyan font-medium transition-colors duration-200">Education</a>
+          <a href="#contact" class="text-text-secondary hover:text-accent-cyan font-medium transition-colors duration-200">Contact</a>
+        </nav>
       </div>
     </div>
-  </nav>
+  </header>
 
   <!-- Hero Section -->
-  <section class="hero-bg pt-32 pb-20 px-4 md:px-8">
-    <div class="globe-container">
-      <div class="globe"></div>
-      <div class="orbit"></div>
-      <div class="satellite"></div>
-    </div>
-    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-      <div class="space-y-8 text-white">
-        <div class="flex items-center space-x-3">
-          <div class="world-badge bg-white/20 backdrop-blur-sm text-white px-4 py-1.5 rounded-full font-medium flex items-center space-x-2">
-            <i class="fas fa-shipping-fast"></i>
-            <span>Worldwide Delivery Network</span>
+  <section class="py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden hero-bg">
+    <div class="absolute inset-0 bg-gradient-to-r from-accent-blue/10 to-accent-purple/10"></div>
+    <div class="max-w-7xl mx-auto relative z-10">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div class="space-y-8">
+          <div class="inline-flex items-center bg-gradient-to-r from-blue-900/50 to-purple-900/50 text-accent-cyan px-6 py-2 rounded-full text-sm font-semibold border border-blue-800 shadow-sm">
+            <i data-lucide="award" class="w-4 h-4 mr-2"></i>
+            ND2 Electrical Engineering Student
+          </div>
+          <h1 class="text-5xl lg:text-6xl font-bold text-text-primary leading-tight">
+            Hello, I'm <span class="bg-gradient-to-r from-accent-blue to-accent-purple bg-clip-text text-transparent">Ekeoha Miracle Chidindu</span>
+          </h1>
+          <p class="text-xl text-text-secondary leading-relaxed max-w-2xl">
+            Passionate electrical engineering student at Federal Polytechnic Nekede, specializing in 
+            power systems, renewable energy, and innovative electrical solutions. Committed to excellence 
+            and driven by curiosity to solve real-world engineering challenges.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a href="#contact" class="bg-gradient-to-r from-accent-blue to-accent-purple text-white px-8 py-4 rounded-xl font-semibold hover:shadow-lg hover:shadow-blue-500/30 hover:scale-105 transition-all duration-300 flex items-center group">
+              Get In Touch
+              <i data-lucide="chevron-right" class="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
+            </a>
+            <a href="#projects" class="border-2 border-border-dark text-text-secondary px-8 py-4 rounded-xl font-semibold hover:border-accent-cyan hover:text-accent-cyan hover:shadow-md hover:shadow-cyan-500/20 transition-all duration-300">
+              View Projects
+            </a>
           </div>
         </div>
-        <h1 class="text-4xl md:text-6xl font-bold leading-tight">
-          Global Delivery Solutions <span class="text-blue-300">That Move at the Speed of Business</span>
-        </h1>
-        <p class="text-xl text-blue-50/90 max-w-2xl">
-          Experience seamless international shipping with real-time tracking, competitive rates, and guaranteed delivery times across 220+ countries and territories worldwide.
+        <div class="flex justify-center">
+          <div class="relative">
+            <div class="w-96 h-96 bg-gradient-to-br from-accent-blue via-accent-purple to-accent-cyan rounded-2xl flex items-center justify-center shadow-2xl transform rotate-3">
+              <div class="w-88 h-88 bg-card-bg rounded-2xl flex items-center justify-center shadow-inner border border-border-dark">
+                <div class="text-center p-6">
+                  <i data-lucide="graduation-cap" class="w-20 h-20 text-accent-blue mx-auto mb-6"></i>
+                  <h3 class="text-3xl font-bold text-text-primary mb-2">Ekeoha M. Chidindu</h3>
+                  <p class="text-lg text-accent-cyan">ND2 Electrical Engineering</p>
+                  <div class="mt-4 flex items-center justify-center text-sm text-text-secondary">
+                    <i data-lucide="school" class="w-4 h-4 mr-1 text-accent-cyan"></i>
+                    Federal Polytechnic Nekede
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="absolute -top-6 -right-6 bg-gradient-to-r from-yellow-500 to-yellow-400 text-gray-900 px-6 py-3 rounded-xl font-bold shadow-lg floating-badge border border-yellow-300">
+              <span class="text-sm block font-medium">Academic</span>
+              <span class="text-2xl font-bold">ND2</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="py-20 bg-card-bg relative about-bg border-y border-border-dark">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-text-primary mb-6">About Me</h2>
+        <div class="w-24 h-1 bg-gradient-to-r from-accent-blue to-accent-purple mx-auto rounded-full"></div>
+        <p class="text-text-secondary text-lg mt-6 max-w-3xl mx-auto">
+          From my foundational years at BrainStars International Academy to my current journey at Federal Polytechnic Nekede, 
+          I've cultivated a deep passion for electrical engineering and its transformative potential.
         </p>
-        <div class="flex flex-col sm:flex-row gap-4">
-          <a href="#quote" class="glow-button bg-white text-global-blue font-bold px-8 py-4 rounded-xl text-lg hover:shadow-xl transition-all transform hover:-translate-y-1">
-            <span>Get a Quote</span> <i class="fas fa-arrow-right ml-2"></i>
+      </div>
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div class="space-y-6">
+          <p class="text-text-secondary text-lg leading-relaxed">
+            I am a dedicated National Diploma Year 2 (ND2) student in Electrical/Electronics Engineering 
+            at the prestigious School of Engineering and Technology, Federal Polytechnic Nekede. My academic 
+            foundation was built at <span class="font-semibold text-accent-cyan">BrainStars International Academy, Ogbaku</span>, 
+            where I developed strong analytical skills and a love for problem-solving.
+          </p>
+          <p class="text-text-secondary text-lg leading-relaxed">
+            Throughout my studies, I've maintained academic excellence while actively engaging in hands-on 
+            projects that bridge theoretical knowledge with practical applications. My interests span across 
+            renewable energy systems, power distribution networks, control systems, and innovative electronic 
+            circuit design.
+          </p>
+          <p class="text-text-secondary text-lg leading-relaxed">
+            I am committed to continuous learning and professional development, always seeking opportunities 
+            to contribute meaningfully to the engineering community and address real-world challenges through 
+            innovative electrical engineering solutions.
+          </p>
+        </div>
+        <div class="space-y-8">
+          <div class="bg-gradient-to-r from-blue-900/30 to-purple-900/30 p-6 rounded-2xl border border-blue-800/50 backdrop-blur-sm">
+            <div class="flex items-center mb-4">
+              <i data-lucide="building" class="w-8 h-8 text-accent-blue mr-4"></i>
+              <div>
+                <h4 class="font-bold text-text-primary text-lg">Current Institution</h4>
+                <p class="text-text-secondary">Federal Polytechnic Nekede</p>
+              </div>
+            </div>
+            <img 
+              src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+              alt="Federal Polytechnic Nekede"
+              class="w-full h-32 object-cover rounded-lg mt-4 border border-border-dark"
+            />
+          </div>
+          <div class="bg-gradient-to-r from-green-900/30 to-emerald-900/30 p-6 rounded-2xl border border-green-800/50 backdrop-blur-sm">
+            <div class="flex items-center mb-4">
+              <i data-lucide="book-open" class="w-8 h-8 text-green-400 mr-4"></i>
+              <div>
+                <h4 class="font-bold text-text-primary text-lg">Alma Mater</h4>
+                <p class="text-text-secondary">BrainStars Int'l Academy, Ogbaku</p>
+              </div>
+            </div>
+            <img 
+              src="https://images.unsplash.com/photo-1509062522246-3755977927d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+              alt="BrainStars International Academy"
+              class="w-full h-32 object-cover rounded-lg mt-4 border border-border-dark"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="py-20 skills-bg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-text-primary mb-6">Technical Skills</h2>
+        <div class="w-24 h-1 bg-gradient-to-r from-accent-blue to-accent-purple mx-auto rounded-full"></div>
+        <p class="text-text-secondary text-lg mt-6 max-w-2xl mx-auto">
+          My technical expertise spans across core electrical engineering disciplines with hands-on experience in modern tools and technologies.
+        </p>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <!-- Skills will be populated by JavaScript -->
+        <div id="skills-container" class="col-span-full grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <!-- Skills will be inserted here -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="py-20 bg-card-bg border-y border-border-dark">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-text-primary mb-6">Featured Projects</h2>
+        <div class="w-24 h-1 bg-gradient-to-r from-accent-blue to-accent-purple mx-auto rounded-full"></div>
+        <p class="text-text-secondary text-lg mt-6 max-w-2xl mx-auto">
+          Innovative engineering solutions that demonstrate my technical capabilities and problem-solving approach.
+        </p>
+      </div>
+      <div class="grid md:grid-cols-2 gap-12" id="projects-container">
+        <!-- Projects will be inserted here -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Education Section -->
+  <section id="education" class="py-20 education-bg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-text-primary mb-6">Educational Journey</h2>
+        <div class="w-24 h-1 bg-gradient-to-r from-accent-blue to-accent-purple mx-auto rounded-full"></div>
+        <p class="text-text-secondary text-lg mt-6 max-w-2xl mx-auto">
+          My academic path from secondary school to higher education in electrical engineering.
+        </p>
+      </div>
+      <div class="max-w-5xl mx-auto space-y-12" id="education-container">
+        <!-- Education items will be inserted here -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Achievements Section -->
+  <section class="py-20 bg-card-bg border-y border-border-dark">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-text-primary mb-6">Achievements & Recognition</h2>
+        <div class="w-24 h-1 bg-gradient-to-r from-accent-blue to-accent-purple mx-auto rounded-full"></div>
+        <p class="text-text-secondary text-lg mt-6 max-w-2xl mx-auto">
+          Academic excellence and recognition throughout my educational journey.
+        </p>
+      </div>
+      <div class="max-w-4xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-6" id="achievements-container">
+          <!-- Achievements will be inserted here -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-20 contact-bg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-white mb-6">Get In Touch</h2>
+        <p class="text-blue-200 text-xl">I'm always open to discussing new opportunities, projects, and collaborations</p>
+      </div>
+      <div class="max-w-5xl mx-auto">
+        <div class="grid md:grid-cols-3 gap-8 text-center">
+          <div class="contact-card bg-card-bg/80 backdrop-blur-sm p-8 rounded-2xl hover:bg-white/10 transition-all duration-300">
+            <i data-lucide="mail" class="w-12 h-12 text-white mx-auto mb-6"></i>
+            <h3 class="text-white font-bold text-xl mb-3">Email</h3>
+            <p class="text-blue-100 text-lg break-words">Miracleekeoha07@outlook.com</p>
+            <a href="mailto:Miracleekeoha07@outlook.com" class="mt-4 inline-block email-btn text-white font-medium px-4 py-2 rounded-lg hover:opacity-90 transition-opacity">
+              <i class="fas fa-envelope mr-2"></i>Send Email
+            </a>
+          </div>
+          <div class="contact-card bg-card-bg/80 backdrop-blur-sm p-8 rounded-2xl hover:bg-white/10 transition-all duration-300">
+            <i data-lucide="phone" class="w-12 h-12 text-green-400 mx-auto mb-6"></i>
+            <h3 class="text-white font-bold text-xl mb-3">WhatsApp</h3>
+            <p class="text-blue-100 text-lg break-words">+234 701 620 9767</p>
+            <a href="https://wa.me/2347016209767" target="_blank" class="mt-4 inline-block whatsapp-btn text-white font-medium px-4 py-2 rounded-lg hover:opacity-90 transition-opacity">
+              <i class="fab fa-whatsapp mr-2"></i>Chat on WhatsApp
+            </a>
+          </div>
+          <div class="contact-card bg-card-bg/80 backdrop-blur-sm p-8 rounded-2xl hover:bg-white/10 transition-all duration-300">
+            <i data-lucide="github" class="w-12 h-12 text-white mx-auto mb-6"></i>
+            <h3 class="text-white font-bold text-xl mb-3">GitHub</h3>
+            <p class="text-blue-100 text-lg break-words">github.com/ekeohamiracle</p>
+            <a href="https://github.com/ekeohamiracle" target="_blank" class="mt-4 inline-block github-btn text-white font-medium px-4 py-2 rounded-lg hover:opacity-90 transition-opacity">
+              <i class="fab fa-github mr-2"></i>View Profile
+            </a>
+          </div>
+        </div>
+        <div class="text-center mt-12">
+          <a 
+            href="#" 
+            class="inline-flex items-center bg-gradient-to-r from-accent-cyan to-accent-blue text-black font-bold px-8 py-4 rounded-xl hover:opacity-90 transition-all duration-300 shadow-lg hover:shadow-xl group"
+          >
+            <i data-lucide="file-text" class="w-6 h-6 mr-3 group-hover:scale-110 transition-transform text-white"></i>
+            Download My Resume
           </a>
-          <a href="#coverage" class="bg-blue-500/20 backdrop-blur-sm text-white font-bold px-8 py-4 rounded-xl text-lg border border-white/30 hover:bg-blue-500/30 transition-all">
-            View Coverage Map
-          </a>
-        </div>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 pt-6">
-          <div class="text-center">
-            <div class="text-3xl font-bold">220+</div>
-            <div class="text-blue-100">Countries</div>
-          </div>
-          <div class="text-center">
-            <div class="text-3xl font-bold">4.97</div>
-            <div class="text-blue-100">Customer Rating</div>
-          </div>
-          <div class="text-center">
-            <div class="text-3xl font-bold">99.8%</div>
-            <div class="text-blue-100">On-Time Rate</div>
-          </div>
-          <div class="text-center">
-            <div class="text-3xl font-bold">24/7</div>
-            <div class="text-blue-100">Support</div>
-          </div>
-        </div>
-      </div>
-      <div class="relative hidden lg:block">
-        <div class="absolute -inset-4 bg-gradient-to-r from-global-blue to-global-teal rounded-full opacity-20 blur-3xl"></div>
-        <div class="relative bg-white rounded-3xl shadow-2xl overflow-hidden border border-white/20">
-          <div class="grid grid-cols-2 h-full">
-            <div class="p-6 bg-gradient-to-br from-global-blue to-global-teal text-white">
-              <div class="flex items-center justify-between mb-4">
-                <div class="flex items-center space-x-3">
-                  <i class="fas fa-map-marker-alt"></i>
-                  <span class="font-bold">New York, USA</span>
-                </div>
-                <div class="bg-white/20 px-3 py-1 rounded-full">Standard</div>
-              </div>
-              <div class="h-40 bg-white/10 rounded-xl mb-4 flex items-center justify-center">
-                <i class="fas fa-box-open text-4xl opacity-50"></i>
-              </div>
-              <div class="space-y-2">
-                <div class="flex justify-between">
-                  <span>Weight:</span>
-                  <span class="font-bold">2.5 kg</span>
-                </div>
-                <div class="flex justify-between">
-                  <span>Dimensions:</span>
-                  <span class="font-bold">30×20×15 cm</span>
-                </div>
-                <div class="flex justify-between">
-                  <span>Contents:</span>
-                  <span class="font-bold">Documents</span>
-                </div>
-              </div>
-            </div>
-            <div class="p-6">
-              <div class="flex items-center justify-between mb-4">
-                <div class="flex items-center space-x-3">
-                  <i class="fas fa-map-marker-alt text-global-teal"></i>
-                  <span class="font-bold text-global-teal">London, UK</span>
-                </div>
-                <div class="text-green-500 font-bold">✓ Delivered</div>
-              </div>
-              <div class="h-40 bg-gray-100 rounded-xl mb-4 flex items-center justify-center">
-                <i class="fas fa-check-circle text-green-500 text-4xl"></i>
-              </div>
-              <div class="space-y-2">
-                <div class="flex justify-between">
-                  <span>Delivery Date:</span>
-                  <span class="font-bold text-green-600">Oct 15, 2023</span>
-                </div>
-                <div class="flex justify-between">
-                  <span>Tracking #:</span>
-                  <span class="font-bold font-mono">GS789012345</span>
-                </div>
-                <div class="flex justify-between">
-                  <span>Cost:</span>
-                  <span class="font-bold text-global-blue">$45.99</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="p-4 bg-gray-50 border-t border-gray-200">
-            <div class="flex items-center justify-between">
-              <div class="flex items-center space-x-2">
-                <div class="w-2 h-2 bg-green-500 rounded-full"></div>
-                <span class="text-sm font-medium text-green-600">Shipment delivered on time</span>
-              </div>
-              <button class="text-global-blue font-medium text-sm hover:underline">View Details</button>
-            </div>
-          </div>
-        </div>
-        <div class="absolute -bottom-6 -right-6 bg-white p-4 rounded-2xl shadow-xl border-2 border-dashed border-global-blue">
-          <div class="text-center">
-            <div class="text-2xl font-bold text-global-blue">Real-Time</div>
-            <div class="text-sm font-medium text-gray-600">Tracking</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- How It Works -->
-  <section id="how-it-works" class="py-20 px-4 md:px-8 bg-white/50">
-    <div class="max-w-7xl mx-auto">
-      <div class="text-center mb-16">
-        <h2 class="section-title text-4xl font-bold text-gray-900 mb-4">How GlobalSwift Works</h2>
-        <p class="text-gray-600 text-lg max-w-2xl mx-auto">Our streamlined global shipping process makes international delivery simple and reliable</p>
-      </div>
-      
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-        <div class="step-card rounded-2xl p-8 text-center card-hover">
-          <div class="flex justify-center mb-6">
-            <div class="step-number">1</div>
-          </div>
-          <i class="fas fa-calculator text-global-blue text-4xl mb-4"></i>
-          <h3 class="text-xl font-bold mb-2">Get Quote</h3>
-          <p class="text-gray-600">Enter shipment details to get instant pricing and delivery estimates for any destination worldwide</p>
-        </div>
-        
-        <div class="step-card rounded-2xl p-8 text-center card-hover">
-          <div class="flex justify-center mb-6">
-            <div class="step-number">2</div>
-          </div>
-          <i class="fas fa-truck-loading text-global-teal text-4xl mb-4"></i>
-          <h3 class="text-xl font-bold mb-2">Book & Pay</h3>
-          <p class="text-gray-600">Schedule pickup or drop off at our locations. Pay securely with multiple currency options</p>
-        </div>
-        
-        <div class="step-card rounded-2xl p-8 text-center card-hover">
-          <div class="flex justify-center mb-6">
-            <div class="step-number">3</div>
-          </div>
-          <i class="fas fa-globe-americas text-accent text-4xl mb-4"></i>
-          <h3 class="text-xl font-bold mb-2">Track Globally</h3>
-          <p class="text-gray-600">Monitor your shipment in real-time across borders with customs clearance updates</p>
-        </div>
-        
-        <div class="step-card rounded-2xl p-8 text-center card-hover">
-          <div class="flex justify-center mb-6">
-            <div class="step-number">4</div>
-          </div>
-          <i class="fas fa-box-check text-success text-4xl mb-4"></i>
-          <h3 class="text-xl font-bold mb-2">Delivered</h3>
-          <p class="text-gray-600">Receive confirmation when your package arrives safely at its international destination</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Services -->
-  <section id="services" class="py-20 px-4 md:px-8">
-    <div class="max-w-7xl mx-auto">
-      <div class="text-center mb-16">
-        <h2 class="section-title text-4xl font-bold text-gray-900 mb-4">Our Global Services</h2>
-        <p class="text-gray-600 text-lg max-w-2xl mx-auto">Comprehensive shipping solutions for every international need</p>
-      </div>
-      
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-        <div class="feature-card rounded-2xl p-8 card-hover">
-          <div class="w-16 h-16 bg-gradient-to-r from-global-blue to-global-teal rounded-2xl flex items-center justify-center mb-6">
-            <i class="fas fa-bolt text-white text-2xl"></i>
-          </div>
-          <h3 class="text-2xl font-bold mb-3">Express Worldwide</h3>
-          <p class="text-gray-600 mb-6">Premium international shipping with guaranteed delivery times. Ideal for time-sensitive shipments across continents.</p>
-          <ul class="space-y-2 mb-6">
-            <li class="flex items-start">
-              <i class="fas fa-check text-success mt-1 mr-2"></i>
-              <span>Delivery in 1-3 business days to major destinations</span>
-            </li>
-            <li class="flex items-start">
-              <i class="fas fa-check text-success mt-1 mr-2"></i>
-              <span>End-to-end tracking with proactive alerts</span>
-            </li>
-            <li class="flex items-start">
-              <i class="fas fa-check text-success mt-1 mr-2"></i>
-              <span>Rounded-the-clock customer support</span>
-            </li>
-            <li class="flex items-start">
-              <i class="fas fa-check text-success mt-1 mr-2"></i>
-              <span>All-risk insurance included</span>
-            </li>
-          </ul>
-          <div class="flex justify-between items-center pt-4 border-t border-gray-200">
-            <span class="font-bold text-global-blue">From $29.99</span>
-            <button class="text-global-blue font-medium hover:text-global-teal transition-colors">Learn More <i class="fas fa-arrow-right ml-1"></i></button>
-          </div>
-        </div>
-        
-        <div class="feature-card rounded-2xl p-8 card-hover">
-          <div class="w-16 h-16 bg-gradient-to-r from-global-teal to-accent rounded-2xl flex items-center justify-center mb-6">
-            <i class="fas fa-shipping-fast text-white text-2xl"></i>
-          </div>
-          <h3 class="text-2xl font-bold mb-3">Standard International</h3>
-          <p class="text-gray-600 mb-6">Reliable and economical shipping for non-urgent packages. Perfect balance of speed and value for global deliveries.</p>
-          <ul class="space-y-2 mb-6">
-            <li class="flex items-start">
-              <i class="fas fa-check text-success mt-1 mr-2"></i>
-              <span>Delivery in 3-7 business days to most countries</span>
-            </li>
-            <li class="flex items-start">
-              <i class="fas fa-check text-success mt-1 mr-2"></i>
-              <span>Automated customs documentation</span>
-            </li>
-            <li class="flex items-start">
-              <i class="fas fa-check text-success mt-1 mr-2"></i>
-              <span>Free pickup from your location</span>
-            </li>
-            <li class="flex items-start">
-              <i class="fas fa-check text-success mt-1 mr-2"></i>
-              <span>Package consolidation available</span>
-            </li>
-          </ul>
-          <div class="flex justify-between items-center pt-4 border-t border-gray-200">
-            <span class="font-bold text-global-teal">From $14.99</span>
-            <button class="text-global-teal font-medium hover:text-accent transition-colors">Learn More <i class="fas fa-arrow-right ml-1"></i></button>
-          </div>
-        </div>
-        
-        <div class="feature-card rounded-2xl p-8 card-hover">
-          <div class="w-16 h-16 bg-gradient-to-r from-accent to-warning rounded-2xl flex items-center justify-center mb-6">
-            <i class="fas fa-industry text-white text-2xl"></i>
-          </div>
-          <h3 class="text-2xl font-bold mb-3">Freight Solutions</h3>
-          <p class="text-gray-600 mb-6">Specialized shipping for businesses and large volume shipments. Air and ocean freight with door-to-door service.</p>
-          <ul class="space-y-2 mb-6">
-            <li class="flex items-start">
-              <i class="fas fa-check text-success mt-1 mr-2"></i>
-              <span>Full and less-than-container load options</span>
-            </li>
-            <li class="flex items-start">
-              <i class="fas fa-check text-success mt-1 mr-2"></i>
-              <span>Customs brokerage services included</span>
-            </li>
-            <li class="flex items-start">
-              <i class="fas fa-check text-success mt-1 mr-2"></i>
-              <span>Supply chain consulting and optimization</span>
-            </li>
-            <li class="flex items-start">
-              <i class="fas fa-check text-success mt-1 mr-2"></i>
-              <span>Real-time inventory management</span>
-            </li>
-          </ul>
-          <div class="flex justify-between items-center pt-4 border-t border-gray-200">
-            <span class="font-bold text-accent">Custom Quote</span>
-            <button class="text-accent font-medium hover:text-warning transition-colors">Learn More <i class="fas fa-arrow-right ml-1"></i></button>
-          </div>
-        </div>
-      </div>
-      
-      <div class="mt-20 text-center">
-        <div class="inline-block bg-gradient-to-r from-global-blue to-global-teal text-white px-8 py-4 rounded-2xl shadow-lg">
-          <h3 class="text-2xl font-bold mb-2">Ship Smarter with Our App</h3>
-          <p class="mb-4">Track shipments, get quotes, and manage deliveries on the go</p>
-          <div class="flex justify-center space-x-4">
-            <button class="bg-black px-6 py-3 rounded-xl flex items-center space-x-2 hover:bg-gray-800 transition-colors">
-              <i class="fab fa-apple text-white text-2xl"></i>
-              <div class="text-left">
-                <div class="text-xs">Download on the</div>
-                <div class="font-bold">App Store</div>
-              </div>
-            </button>
-            <button class="bg-black px-6 py-3 rounded-xl flex items-center space-x-2 hover:bg-gray-800 transition-colors">
-              <i class="fab fa-google-play text-white text-2xl"></i>
-              <div class="text-left">
-                <div class="text-xs">GET IT ON</div>
-                <div class="font-bold">Google Play</div>
-              </div>
-            </button>
-            <button class="bg-black px-6 py-3 rounded-xl flex items-center space-x-2 hover:bg-gray-800 transition-colors">
-              <i class="fab fa-windows text-white text-2xl"></i>
-              <div class="text-left">
-                <div class="text-xs">DOWNLOAD FOR</div>
-                <div class="font-bold">Windows</div>
-              </div>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Global Coverage -->
-  <section id="coverage" class="py-20 px-4 md:px-8 bg-gradient-to-br from-blue-50 to-cyan-50">
-    <div class="max-w-7xl mx-auto">
-      <div class="text-center mb-16">
-        <h2 class="section-title text-4xl font-bold text-gray-900 mb-4">Global Coverage</h2>
-        <p class="text-gray-600 text-lg max-w-2xl mx-auto">Delivering across 220+ countries and territories with strategic hubs worldwide</p>
-      </div>
-      
-      <div class="world-network mb-16">
-        <div id="network-container" class="w-full h-full relative">
-          <!-- Network nodes will be added by JavaScript -->
-        </div>
-        <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 text-white text-center">
-          <h3 class="text-xl font-bold mb-2">Global Network with 150+ Hubs</h3>
-          <p class="opacity-90">Real-time connection between major economic centers worldwide</p>
-        </div>
-      </div>
-      
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-        <div class="coverage-badge bg-white p-6 rounded-2xl shadow-md text-center hover:shadow-lg transition-all">
-          <div class="flex justify-center mb-4">
-            <div class="country-flag" style="background-image: url('https://flagcdn.com/us.svg');"></div>
-            <span class="font-bold text-lg">United States</span>
-          </div>
-          <p class="text-gray-600 mb-2">48-hour delivery to all states</p>
-          <div class="flex justify-center space-x-1">
-            <span class="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">$29.99+</span>
-            <span class="px-2 py-1 bg-green-100 text-green-800 rounded-full text-sm">150+ hubs</span>
-          </div>
-        </div>
-        
-        <div class="coverage-badge bg-white p-6 rounded-2xl shadow-md text-center hover:shadow-lg transition-all">
-          <div class="flex justify-center mb-4">
-            <div class="country-flag" style="background-image: url('https://flagcdn.com/eu.svg');"></div>
-            <span class="font-bold text-lg">European Union</span>
-          </div>
-          <p class="text-gray-600 mb-2">Next-day delivery within EU</p>
-          <div class="flex justify-center space-x-1">
-            <span class="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">€24.99+</span>
-            <span class="px-2 py-1 bg-green-100 text-green-800 rounded-full text-sm">85+ hubs</span>
-          </div>
-        </div>
-        
-        <div class="coverage-badge bg-white p-6 rounded-2xl shadow-md text-center hover:shadow-lg transition-all">
-          <div class="flex justify-center mb-4">
-            <div class="country-flag" style="background-image: url('https://flagcdn.com/as.svg');"></div>
-            <span class="font-bold text-lg">Asia Pacific</span>
-          </div>
-          <p class="text-gray-600 mb-2">Major cities in 24-48 hours</p>
-          <div class="flex justify-center space-x-1">
-            <span class="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">$34.99+</span>
-            <span class="px-2 py-1 bg-green-100 text-green-800 rounded-full text-sm">60+ hubs</span>
-          </div>
-        </div>
-        
-        <div class="coverage-badge bg-white p-6 rounded-2xl shadow-md text-center hover:shadow-lg transition-all">
-          <div class="flex justify-center mb-4">
-            <div class="country-flag" style="background-image: url('https://flagcdn.com/af.svg');"></div>
-            <span class="font-bold text-lg">Africa & Middle East</span>
-          </div>
-          <p class="text-gray-600 mb-2">Key economic centers covered</p>
-          <div class="flex justify-center space-x-1">
-            <span class="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">$39.99+</span>
-            <span class="px-2 py-1 bg-green-100 text-green-800 rounded-full text-sm">30+ hubs</span>
-          </div>
-        </div>
-      </div>
-      
-      <div class="text-center">
-        <button class="bg-gradient-to-r from-global-blue to-global-teal text-white font-bold px-8 py-4 rounded-xl hover:opacity-90 transition-all shadow-lg hover:shadow-xl">
-          View Full Coverage Map <i class="fas fa-map-marked-alt ml-2"></i>
-        </button>
-      </div>
-    </div>
-  </section>
-
-  <!-- Stats Section -->
-  <section class="py-16 px-4 md:px-8 bg-gradient-to-br from-blue-50 to-cyan-50">
-    <div class="max-w-7xl mx-auto">
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-        <div class="stat-card rounded-xl p-6 text-center border border-blue-100">
-          <div class="text-global-blue text-4xl font-bold mb-2">220+</div>
-          <div class="text-gray-600">Countries Served</div>
-        </div>
-        <div class="stat-card rounded-xl p-6 text-center border border-teal-100">
-          <div class="text-global-teal text-4xl font-bold mb-2">1M+</div>
-          <div class="text-gray-600">Daily Shipments</div>
-        </div>
-        <div class="stat-card rounded-xl p-6 text-center border border-purple-100">
-          <div class="text-accent text-4xl font-bold mb-2">99.8%</div>
-          <div class="text-gray-600">On-Time Delivery</div>
-        </div>
-        <div class="stat-card rounded-xl p-6 text-center border border-green-100">
-          <div class="text-success text-4xl font-bold mb-2">4.97/5</div>
-          <div class="text-gray-600">Customer Rating</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Pricing -->
-  <section id="pricing" class="py-20 px-4 md:px-8 bg-white/50">
-    <div class="max-w-7xl mx-auto">
-      <div class="text-center mb-16">
-        <h2 class="section-title text-4xl font-bold text-gray-900 mb-4">Transparent Global Pricing</h2>
-        <p class="text-gray-600 text-lg max-w-2xl mx-auto">No hidden fees or fuel surcharges. What you see is what you pay.</p>
-      </div>
-      
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-        <div class="price-card rounded-2xl p-8">
-          <div class="text-center mb-6">
-            <h3 class="text-2xl font-bold">Standard</h3>
-            <p class="text-gray-600">For routine international shipments</p>
-          </div>
-          <div class="text-center mb-8">
-            <div class="text-5xl font-bold text-global-blue mb-2">$14.99</div>
-            <div class="text-gray-500">First 2kg</div>
-          </div>
-          <ul class="space-y-3 mb-8">
-            <li class="flex items-center">
-              <i class="fas fa-check text-success mr-3"></i>
-              <span>Delivery in 3-7 business days</span>
-            </li>
-            <li class="flex items-center">
-              <i class="fas fa-check text-success mr-3"></i>
-              <span>Basic tracking</span>
-            </li>
-            <li class="flex items-center">
-              <i class="fas fa-check text-success mr-3"></i>
-              <span>Up to $100 insurance</span>
-            </li>
-            <li class="flex items-center">
-              <i class="fas fa-check text-success mr-3"></i>
-              <span>Free pickup</span>
-            </li>
-            <li class="flex items-center">
-              <i class="fas fa-check text-success mr-3"></i>
-              <span>Standard packaging</span>
-            </li>
-          </ul>
-          <button class="w-full bg-global-blue/10 text-global-blue font-medium py-3 rounded-xl hover:bg-global-blue/20 transition-colors">
-            Choose Plan
-          </button>
-        </div>
-        
-        <div class="price-card popular rounded-2xl p-8 border-2 border-global-blue">
-          <div class="absolute top-0 right-0 bg-gradient-to-r from-global-blue to-global-teal text-white px-4 py-1 rounded-bl-xl rounded-tr-xl font-bold">
-            MOST POPULAR
-          </div>
-          <div class="text-center mb-6">
-            <h3 class="text-2xl font-bold">Express</h3>
-            <p class="text-gray-600">For time-sensitive international shipments</p>
-          </div>
-          <div class="text-center mb-8">
-            <div class="text-5xl font-bold text-global-teal mb-2">$29.99</div>
-            <div class="text-gray-500">First 2kg</div>
-          </div>
-          <ul class="space-y-3 mb-8">
-            <li class="flex items-center">
-              <i class="fas fa-check text-success mr-3"></i>
-              <span>Delivery in 1-3 business days</span>
-            </li>
-            <li class="flex items-center">
-              <i class="fas fa-check text-success mr-3"></i>
-              <span>Real-time GPS tracking</span>
-            </li>
-            <li class="flex items-center">
-              <i class="fas fa-check text-success mr-3"></i>
-              <span>Up to $500 insurance</span>
-            </li>
-            <li class="flex items-center">
-              <i class="fas fa-check text-success mr-3"></i>
-              <span>Priority customs clearance</span>
-            </li>
-            <li class="flex items-center">
-              <i class="fas fa-check text-success mr-3"></i>
-              <span>Premium packaging</span>
-            </li>
-            <li class="flex items-center">
-              <i class="fas fa-check text-success mr-3"></i>
-              <span>Signature confirmation</span>
-            </li>
-          </ul>
-          <button class="w-full bg-gradient-to-r from-global-blue to-global-teal text-white font-bold py-3 rounded-xl hover:opacity-90 transition-all shadow-lg">
-            Choose Plan
-          </button>
-        </div>
-        
-        <div class="price-card rounded-2xl p-8">
-          <div class="text-center mb-6">
-            <h3 class="text-2xl font-bold">Enterprise</h3>
-            <p class="text-gray-600">For businesses with global shipping needs</p>
-          </div>
-          <div class="text-center mb-8">
-            <div class="text-5xl font-bold text-accent mb-2">Custom</div>
-            <div class="text-gray-500">Volume-based pricing</div>
-          </div>
-          <ul class="space-y-3 mb-8">
-            <li class="flex items-center">
-              <i class="fas fa-check text-success mr-3"></i>
-              <span>Dedicated account manager</span>
-            </li>
-            <li class="flex items-center">
-              <i class="fas fa-check text-success mr-3"></i>
-              <span>Bulk shipping discounts</span>
-            </li>
-            <li class="flex items-center">
-              <i class="fas fa-check text-success mr-3"></i>
-              <span>API integration</span>
-            </li>
-            <li class="flex items-center">
-              <i class="fas fa-check text-success mr-3"></i>
-              <span>Customs compliance tools</span>
-            </li>
-            <li class="flex items-center">
-              <i class="fas fa-check text-success mr-3"></i>
-              <span>Real-time analytics dashboard</span>
-            </li>
-            <li class="flex items-center">
-              <i class="fas fa-check text-success mr-3"></i>
-              <span>24/7 priority support</span>
-            </li>
-          </ul>
-          <button class="w-full bg-accent/10 text-accent font-medium py-3 rounded-xl hover:bg-accent/20 transition-colors">
-            Contact Sales
-          </button>
-        </div>
-      </div>
-      
-      <div class="mt-16 text-center max-w-3xl mx-auto bg-blue-50 rounded-2xl p-8">
-        <h3 class="text-2xl font-bold text-gray-900 mb-3">Multi-Currency Support</h3>
-        <p class="text-gray-600 mb-6">Pay in your local currency with transparent exchange rates. No hidden conversion fees.</p>
-        <div class="flex flex-wrap justify-center gap-4">
-          <span class="bg-white px-4 py-2 rounded-xl font-bold shadow">USD $</span>
-          <span class="bg-white px-4 py-2 rounded-xl font-bold shadow">EUR €</span>
-          <span class="bg-white px-4 py-2 rounded-xl font-bold shadow">GBP £</span>
-          <span class="bg-white px-4 py-2 rounded-xl font-bold shadow">JPY ¥</span>
-          <span class="bg-white px-4 py-2 rounded-xl font-bold shadow">CAD $</span>
-          <span class="bg-white px-4 py-2 rounded-xl font-bold shadow">AUD $</span>
-          <span class="bg-white px-4 py-2 rounded-xl font-bold shadow">NGN ₦</span>
-          <span class="bg-white px-4 py-2 rounded-xl font-bold shadow">+45 more</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Testimonials -->
-  <section class="py-20 px-4 md:px-8 bg-gradient-to-br from-gray-50 to-white">
-    <div class="max-w-7xl mx-auto">
-      <div class="text-center mb-16">
-        <h2 class="section-title text-4xl font-bold text-gray-900 mb-4">Global Customer Stories</h2>
-        <p class="text-gray-600 text-lg max-w-2xl mx-auto">Trusted by businesses and individuals across six continents</p>
-      </div>
-      
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="testimonial-card rounded-xl p-8 card-hover">
-          <div class="flex text-yellow-400 mb-4">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-          </div>
-          <p class="text-gray-600 italic mb-6">"As an e-commerce business shipping globally, GlobalSwift has transformed our logistics. Their express service gets our products to European customers in 48 hours, and their tracking is more reliable than FedEx. Customer satisfaction has increased by 35% since we switched."</p>
-          <div class="flex items-center">
-            <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
-              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Customer" class="w-full h-full object-cover">
-            </div>
-            <div>
-              <h4 class="font-bold">Sarah Mitchell</h4>
-              <p class="text-gray-500 text-sm">CEO, ArtisanGlobal.com</p>
-              <div class="country-flag inline-block mt-1" style="background-image: url('https://flagcdn.com/us.svg');"></div>
-            </div>
-          </div>
-        </div>
-        
-        <div class="testimonial-card rounded-xl p-8 card-hover">
-          <div class="flex text-yellow-400 mb-4">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-          </div>
-          <p class="text-gray-600 italic mb-6">"I needed to send critical medical documents from London to Tokyo within 24 hours. GlobalSwift's express service delivered in 18 hours with full tracking. Their customer service stayed on the line with me during the entire transit. Absolutely exceptional service when it mattered most."</p>
-          <div class="flex items-center">
-            <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
-              <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Customer" class="w-full h-full object-cover">
-            </div>
-            <div>
-              <h4 class="font-bold">James Wilson</h4>
-              <p class="text-gray-500 text-sm">Healthcare Director</p>
-              <div class="country-flag inline-block mt-1" style="background-image: url('https://flagcdn.com/gb.svg');"></div>
-            </div>
-          </div>
-        </div>
-        
-        <div class="testimonial-card rounded-xl p-8 card-hover">
-          <div class="flex text-yellow-400 mb-4">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-          </div>
-          <p class="text-gray-600 italic mb-6">"As a small business owner in Lagos shipping handmade crafts worldwide, I was struggling with unreliable couriers and high costs. GlobalSwift's Standard service offers the perfect balance - affordable rates with reliable tracking. My international sales have doubled in six months."</p>
-          <div class="flex items-center">
-            <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
-              <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5cd?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Customer" class="w-full h-full object-cover">
-            </div>
-            <div>
-              <h4 class="font-bold">Adebayo Okafor</h4>
-              <p class="text-gray-500 text-sm">Founder, CraftedInNigeria</p>
-              <div class="country-flag inline-block mt-1" style="background-image: url('https://flagcdn.com/ng.svg');"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <div class="mt-16 text-center">
-        <div class="inline-flex items-center bg-gradient-to-r from-global-blue to-global-teal text-white px-8 py-4 rounded-2xl shadow-lg">
-          <i class="fas fa-quote-left text-4xl mr-4 opacity-50"></i>
-          <div class="text-left">
-            <div class="text-2xl font-bold">"GlobalSwift reduced our international shipping costs by 28% while improving delivery times by 15%. Their technology platform integrates seamlessly with our e-commerce system."</div>
-            <div class="mt-2 font-medium">— Elena Rodriguez, VP of Logistics, TechGlobal Inc.</div>
-            <div class="country-flag inline-block mt-1" style="background-image: url('https://flagcdn.com/es.svg');"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Quote Form -->
-  <section id="quote" class="py-20 px-4 md:px-8 bg-gradient-to-r from-global-blue to-global-teal">
-    <div class="max-w-4xl mx-auto bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl overflow-hidden">
-      <div class="p-8 md:p-12">
-        <div class="text-center mb-10">
-          <h2 class="text-3xl font-bold text-gray-900 mb-3">Get an Instant Shipping Quote</h2>
-          <p class="text-gray-600">Enter your shipment details for immediate pricing to any destination worldwide</p>
-        </div>
-        
-        <form class="space-y-6">
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-              <label class="block text-gray-700 mb-2 font-medium">Origin Country</label>
-              <select class="w-full px-4 py-4 rounded-xl border border-gray-300 focus:ring-2 focus:ring-global-blue focus:border-transparent transition-all bg-white">
-                <option>United States</option>
-                <option>United Kingdom</option>
-                <option>Canada</option>
-                <option>Germany</option>
-                <option>France</option>
-                <option>Australia</option>
-                <option>Japan</option>
-                <option>Nigeria</option>
-                <option>India</option>
-                <option>Brazil</option>
-                <option>China</option>
-                <option>South Africa</option>
-              </select>
-            </div>
-            <div>
-              <label class="block text-gray-700 mb-2 font-medium">Destination Country</label>
-              <select class="w-full px-4 py-4 rounded-xl border border-gray-300 focus:ring-2 focus:ring-global-blue focus:border-transparent transition-all bg-white">
-                <option>United Kingdom</option>
-                <option>United States</option>
-                <option>Canada</option>
-                <option>Germany</option>
-                <option>France</option>
-                <option>Australia</option>
-                <option>Japan</option>
-                <option>Nigeria</option>
-                <option>India</option>
-                <option>Brazil</option>
-                <option>China</option>
-                <option>South Africa</option>
-              </select>
-            </div>
-            <div>
-              <label class="block text-gray-700 mb-2 font-medium">Package Weight</label>
-              <select class="w-full px-4 py-4 rounded-xl border border-gray-300 focus:ring-2 focus:ring-global-blue focus:border-transparent transition-all bg-white">
-                <option>Up to 1kg (2.2 lbs)</option>
-                <option>1-3kg (2.2-6.6 lbs)</option>
-                <option>3-5kg (6.6-11 lbs)</option>
-                <option>5-10kg (11-22 lbs)</option>
-                <option>10-20kg (22-44 lbs)</option>
-                <option>Over 20kg (44+ lbs)</option>
-              </select>
-            </div>
-            <div>
-              <label class="block text-gray-700 mb-2 font-medium">Service Level</label>
-              <select class="w-full px-4 py-4 rounded-xl border border-gray-300 focus:ring-2 focus:ring-global-blue focus:border-transparent transition-all bg-white">
-                <option>Standard (3-7 business days)</option>
-                <option selected>Express (1-3 business days)</option>
-                <option>Premium (Next business day)</option>
-              </select>
-            </div>
-          </div>
-          
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="md:col-span-2">
-              <label class="block text-gray-700 mb-2 font-medium">Package Contents</label>
-              <input type="text" placeholder="e.g., Documents, Electronics, Clothing, etc." class="w-full px-4 py-4 rounded-xl border border-gray-300 focus:ring-2 focus:ring-global-blue focus:border-transparent transition-all">
-            </div>
-            <div>
-              <label class="block text-gray-700 mb-2 font-medium">Package Value</label>
-              <input type="text" placeholder="$100" class="w-full px-4 py-4 rounded-xl border border-gray-300 focus:ring-2 focus:ring-global-blue focus:border-transparent transition-all">
-            </div>
-          </div>
-          
-          <div class="flex items-center space-x-3 bg-blue-50 p-4 rounded-xl">
-            <i class="fas fa-shield-alt text-blue-500 text-2xl"></i>
-            <div class="text-gray-700">
-              <span class="font-medium">All shipments include insurance</span> based on declared value. Additional coverage available at checkout.
-            </div>
-          </div>
-          
-          <button type="submit" class="w-full bg-gradient-to-r from-global-blue to-global-teal text-white font-bold py-5 rounded-xl text-lg hover:opacity-90 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
-            <span class="flex items-center justify-center">
-              <i class="fas fa-calculator mr-3"></i>
-              <span>Calculate Shipping Cost</span>
-            </span>
-          </button>
-        </form>
-      </div>
-    </div>
-  </section>
-
-  <!-- World Map Tracking -->
-  <section id="track" class="py-20 px-4 md:px-8">
-    <div class="max-w-7xl mx-auto">
-      <div class="text-center mb-16">
-        <h2 class="section-title text-4xl font-bold text-gray-900 mb-4">Live Global Tracking Network</h2>
-        <p class="text-gray-600 text-lg max-w-2xl mx-auto">Monitor your shipment's journey across continents in real-time</p>
-      </div>
-      
-      <div class="map-container rounded-2xl overflow-hidden h-[500px] relative">
-        <div class="world-map"></div>
-        
-        <!-- Major hub locations -->
-        <div class="route-point" style="top: 50%; left: 20%;"></div>
-        <div class="route-point" style="top: 40%; left: 40%;"></div>
-        <div class="route-point" style="top: 60%; left: 60%;"></div>
-        <div class="route-point" style="top: 30%; left: 80%;"></div>
-        
-        <!-- Route lines -->
-        <div class="route-line" style="top: 45%; left: 20%; width: 20%; transform: rotate(30deg);"></div>
-        <div class="route-line" style="top: 50%; left: 40%; width: 20%; transform: rotate(-15deg);"></div>
-        <div class="route-line" style="top: 45%; left: 60%; width: 20%; transform: rotate(15deg);"></div>
-        
-        <div class="absolute bottom-8 left-8 bg-white/90 backdrop-blur-sm p-6 rounded-xl shadow-xl">
-          <div class="flex items-center space-x-4">
-            <div class="w-4 h-4 rounded-full bg-blue-500"></div>
-            <div>
-              <div class="font-bold">42 shipments in transit</div>
-              <div class="text-gray-600">Currently moving across global network</div>
-            </div>
-          </div>
-        </div>
-        
-        <div class="absolute bottom-8 right-8 bg-white/90 backdrop-blur-sm p-6 rounded-xl shadow-xl">
-          <div class="text-right">
-            <div class="font-bold text-global-teal">Track Your Shipment</div>
-            <div class="text-gray-600 mt-1">Enter your tracking number below</div>
-            <div class="mt-3 flex">
-              <input type="text" placeholder="GS789012345" class="px-4 py-2 rounded-l-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-global-blue">
-              <button class="bg-global-blue text-white px-4 rounded-r-lg hover:bg-global-teal transition-colors">
-                <i class="fas fa-search"></i>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <div class="mt-16 max-w-3xl mx-auto">
-        <h3 class="text-2xl font-bold text-center mb-8">Shipment Status Timeline</h3>
-        <div class="bg-white rounded-2xl shadow-lg p-6">
-          <div class="timeline-item">
-            <h4 class="font-bold text-lg">Shipment Created</h4>
-            <p class="text-gray-600">Oct 15, 2023 at 2:30 PM EST</p>
-            <p class="text-sm text-gray-500 mt-1">Shipping label generated for GS789012345</p>
-          </div>
-          <div class="timeline-item">
-            <h4 class="font-bold text-lg">Picked Up</h4>
-            <p class="text-gray-600">Oct 15, 2023 at 4:15 PM EST</p>
-            <p class="text-sm text-gray-500 mt-1">Package picked up from New York, USA facility</p>
-          </div>
-          <div class="timeline-item">
-            <h4 class="font-bold text-lg">Departed Origin Facility</h4>
-            <p class="text-gray-600">Oct 15, 2023 at 8:45 PM EST</p>
-            <p class="text-sm text-gray-500 mt-1">Shipment has left New York hub on flight AA456</p>
-          </div>
-          <div class="timeline-item">
-            <h4 class="font-bold text-lg">Arrived at Destination Country</h4>
-            <p class="text-gray-600">Oct 16, 2023 at 10:30 AM GMT</p>
-            <p class="text-sm text-gray-500 mt-1">Package arrived at London Heathrow Airport</p>
-          </div>
-          <div class="timeline-item">
-            <h4 class="font-bold text-lg">Customs Clearance</h4>
-            <p class="text-gray-600">Oct 16, 2023 at 2:15 PM GMT</p>
-            <p class="text-sm text-gray-500 mt-1">Package cleared UK customs successfully</p>
-          </div>
-          <div class="timeline-item">
-            <h4 class="font-bold text-lg text-global-teal">Out for Delivery</h4>
-            <p class="text-gray-600">Oct 16, 2023 at 3:45 PM GMT</p>
-            <p class="text-sm text-gray-500 mt-1">Package dispatched to London delivery center</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Locations -->
-  <section id="locations" class="py-20 px-4 md:px-8 bg-gradient-to-br from-gray-50 to-white">
-    <div class="max-w-7xl mx-auto">
-      <div class="text-center mb-16">
-        <h2 class="section-title text-4xl font-bold text-gray-900 mb-4">Global Service Centers</h2>
-        <p class="text-gray-600 text-lg max-w-2xl mx-auto">Find a GlobalSwift location near you with professional staff ready to assist</p>
-      </div>
-      
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
-          <div class="h-48 bg-gradient-to-br from-blue-500 to-blue-700"></div>
-          <div class="p-6">
-            <div class="flex items-center mb-4">
-              <div class="country-flag" style="background-image: url('https://flagcdn.com/us.svg');"></div>
-              <h3 class="text-xl font-bold ml-2">Americas Hub</h3>
-            </div>
-            <div class="space-y-4">
-              <div class="flex items-start">
-                <i class="fas fa-map-marker-alt text-global-blue mt-1 mr-3"></i>
-                <div>
-                  <h4 class="font-bold">New York, USA</h4>
-                  <p class="text-gray-600">350 5th Avenue, New York, NY 10118</p>
-                  <p class="text-gray-600 mt-1"><i class="fas fa-phone mr-2"></i>+1 (212) 555-1000</p>
-                </div>
-              </div>
-              <div class="flex items-start">
-                <i class="fas fa-map-marker-alt text-global-blue mt-1 mr-3"></i>
-                <div>
-                  <h4 class="font-bold">Los Angeles, USA</h4>
-                  <p class="text-gray-600">1234 Wilshire Blvd, Los Angeles, CA 90017</p>
-                </div>
-              </div>
-              <div class="flex items-start">
-                <i class="fas fa-map-marker-alt text-global-blue mt-1 mr-3"></i>
-                <div>
-                  <h4 class="font-bold">São Paulo, Brazil</h4>
-                  <p class="text-gray-600">Av. Paulista 1000, São Paulo, SP 01310-100</p>
-                </div>
-              </div>
-            </div>
-            <button class="mt-4 text-global-blue font-medium hover:text-global-teal transition-colors flex items-center">
-              View All Americas Locations <i class="fas fa-arrow-right ml-2"></i>
-            </button>
-          </div>
-        </div>
-        
-        <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
-          <div class="h-48 bg-gradient-to-br from-emerald-500 to-emerald-700"></div>
-          <div class="p-6">
-            <div class="flex items-center mb-4">
-              <div class="country-flag" style="background-image: url('https://flagcdn.com/eu.svg');"></div>
-              <h3 class="text-xl font-bold ml-2">Europe Hub</h3>
-            </div>
-            <div class="space-y-4">
-              <div class="flex items-start">
-                <i class="fas fa-map-marker-alt text-global-teal mt-1 mr-3"></i>
-                <div>
-                  <h4 class="font-bold">London, UK</h4>
-                  <p class="text-gray-600">100 Bishopsgate, London EC2M 1GT</p>
-                  <p class="text-gray-600 mt-1"><i class="fas fa-phone mr-2"></i>+44 20 7123 4567</p>
-                </div>
-              </div>
-              <div class="flex items-start">
-                <i class="fas fa-map-marker-alt text-global-teal mt-1 mr-3"></i>
-                <div>
-                  <h4 class="font-bold">Berlin, Germany</h4>
-                  <p class="text-gray-600">Alexanderplatz 5, 10178 Berlin</p>
-                </div>
-              </div>
-              <div class="flex items-start">
-                <i class="fas fa-map-marker-alt text-global-teal mt-1 mr-3"></i>
-                <div>
-                  <h4 class="font-bold">Paris, France</h4>
-                  <p class="text-gray-600">23 Rue de la Paix, 75002 Paris</p>
-                </div>
-              </div>
-            </div>
-            <button class="mt-4 text-global-teal font-medium hover:text-accent transition-colors flex items-center">
-              View All Europe Locations <i class="fas fa-arrow-right ml-2"></i>
-            </button>
-          </div>
-        </div>
-        
-        <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
-          <div class="h-48 bg-gradient-to-br from-purple-500 to-purple-700"></div>
-          <div class="p-6">
-            <div class="flex items-center mb-4">
-              <div class="country-flag" style="background-image: url('https://flagcdn.com/as.svg');"></div>
-              <h3 class="text-xl font-bold ml-2">Asia-Pacific Hub</h3>
-            </div>
-            <div class="space-y-4">
-              <div class="flex items-start">
-                <i class="fas fa-map-marker-alt text-accent mt-1 mr-3"></i>
-                <div>
-                  <h4 class="font-bold">Singapore</h4>
-                  <p class="text-gray-600">10 Marina Boulevard, Singapore 018983</p>
-                  <p class="text-gray-600 mt-1"><i class="fas fa-phone mr-2"></i>+65 6123 4567</p>
-                </div>
-              </div>
-              <div class="flex items-start">
-                <i class="fas fa-map-marker-alt text-accent mt-1 mr-3"></i>
-                <div>
-                  <h4 class="font-bold">Tokyo, Japan</h4>
-                  <p class="text-gray-600">1-1 Marunouchi, Chiyoda-ku, Tokyo 100-0005</p>
-                </div>
-              </div>
-              <div class="flex items-start">
-                <i class="fas fa-map-marker-alt text-accent mt-1 mr-3"></i>
-                <div>
-                  <h4 class="font-bold">Sydney, Australia</h4>
-                  <p class="text-gray-600">1 Market Street, Sydney NSW 2000</p>
-                </div>
-              </div>
-            </div>
-            <button class="mt-4 text-accent font-medium hover:text-purple-600 transition-colors flex items-center">
-              View All Asia-Pacific Locations <i class="fas fa-arrow-right ml-2"></i>
-            </button>
-          </div>
-        </div>
-      </div>
-      
-      <div class="mt-16 text-center">
-        <div class="inline-block bg-gradient-to-r from-global-blue to-global-teal text-white px-8 py-4 rounded-2xl shadow-lg">
-          <h3 class="text-2xl font-bold mb-2">24/7 Customer Support</h3>
-          <p class="mb-4">Need help with an international shipment? Our multilingual support team is available around the clock.</p>
-          <div class="flex justify-center space-x-8">
-            <div class="text-center">
-              <div class="text-2xl font-bold">+1 800 123 4567</div>
-              <div class="text-sm opacity-90">Americas</div>
-            </div>
-            <div class="text-center">
-              <div class="text-2xl font-bold">+44 20 7123 4567</div>
-              <div class="text-sm opacity-90">Europe</div>
-            </div>
-            <div class="text-center">
-              <div class="text-2xl font-bold">+65 6123 4567</div>
-              <div class="text-sm opacity-90">Asia-Pacific</div>
-            </div>
-          </div>
-          <div class="mt-4 flex justify-center space-x-4">
-            <button class="flex items-center bg-white text-global-blue px-4 py-2 rounded-lg hover:bg-gray-100 transition-colors">
-              <i class="fas fa-comments mr-2"></i> Live Chat
-            </button>
-            <button class="flex items-center bg-white text-global-blue px-4 py-2 rounded-lg hover:bg-gray-100 transition-colors">
-              <i class="fas fa-envelope mr-2"></i> Email Support
-            </button>
-          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="bg-dark text-gray-300 py-16 px-4 md:px-8">
-    <div class="max-w-7xl mx-auto">
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
-        <div class="md:col-span-1">
-          <div class="flex items-center space-x-3 mb-6">
-            <div class="bg-gradient-to-r from-global-blue to-global-teal p-2 rounded-xl">
-              <i class="fas fa-globe-americas text-white text-2xl"></i>
-            </div>
-            <span class="text-2xl font-bold bg-gradient-to-r from-global-blue to-global-teal bg-clip-text text-transparent">GlobalSwift</span>
-          </div>
-          <p class="mb-6 max-w-xs">
-            Global delivery solutions with precision, reliability, and speed. Connecting businesses and individuals worldwide with seamless shipping experiences.
-          </p>
-          <div class="flex space-x-4">
-            <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-global-blue transition-colors">
-              <i class="fab fa-facebook-f"></i>
-            </a>
-            <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-global-blue transition-colors">
-              <i class="fab fa-twitter"></i>
-            </a>
-            <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-global-blue transition-colors">
-              <i class="fab fa-linkedin-in"></i>
-            </a>
-            <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-global-blue transition-colors">
-              <i class="fab fa-instagram"></i>
-            </a>
-            <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-global-blue transition-colors">
-              <i class="fab fa-youtube"></i>
-            </a>
-          </div>
-        </div>
-        
-        <div class="md:col-span-1">
-          <h3 class="text-white font-bold text-lg mb-6">Quick Links</h3>
-          <ul class="space-y-3">
-            <li><a href="#" class="hover:text-global-blue transition-colors">Home</a></li>
-            <li><a href="#how-it-works" class="hover:text-global-blue transition-colors">How It Works</a></li>
-            <li><a href="#services" class="hover:text-global-blue transition-colors">Services</a></li>
-            <li><a href="#coverage" class="hover:text-global-blue transition-colors">Coverage Map</a></li>
-            <li><a href="#track" class="hover:text-global-blue transition-colors">Track Shipment</a></li>
-            <li><a href="#locations" class="hover:text-global-blue transition-colors">Service Centers</a></li>
-            <li><a href="#quote" class="hover:text-global-blue transition-colors">Get Quote</a></li>
-          </ul>
-        </div>
-        
-        <div class="md:col-span-1">
-          <h3 class="text-white font-bold text-lg mb-6">Services</h3>
-          <ul class="space-y-3">
-            <li><a href="#" class="hover:text-global-blue transition-colors">Express Worldwide</a></li>
-            <li><a href="#" class="hover:text-global-blue transition-colors">Standard International</a></li>
-            <li><a href="#" class="hover:text-global-blue transition-colors">Freight Solutions</a></li>
-            <li><a href="#" class="hover:text-global-blue transition-colors">E-commerce Shipping</a></li>
-            <li><a href="#" class="hover:text-global-blue transition-colors">Document Courier</a></li>
-            <li><a href="#" class="hover:text-global-blue transition-colors">Dangerous Goods</a></li>
-            <li><a href="#" class="hover:text-global-blue transition-colors">Temperature-Controlled</a></li>
-          </ul>
-        </div>
-        
-        <div class="md:col-span-1">
-          <h3 class="text-white font-bold text-lg mb-6">Contact GlobalSwift</h3>
-          <ul class="space-y-4">
-            <li class="flex items-start">
-              <i class="fas fa-map-marker-alt text-global-blue mt-1 mr-3"></i>
-              <span>123 Global Boulevard, New York, NY 10001, United States</span>
-            </li>
-            <li class="flex items-center">
-              <i class="fas fa-phone-alt text-global-blue mr-3"></i>
-              <span>+1 (800) 123-4567</span>
-            </li>
-            <li class="flex items-center">
-              <i class="fas fa-envelope text-global-blue mr-3"></i>
-              <span>support@globalswift.com</span>
-            </li>
-            <li class="flex items-center">
-              <i class="fas fa-clock text-global-blue mr-3"></i>
-              <span>24/7 Global Support</span>
-            </li>
-          </ul>
-          <div class="mt-6">
-            <h4 class="text-white font-bold mb-3">Multi-Language Support</h4>
-            <div class="flex flex-wrap gap-2">
-              <span class="bg-gray-800 text-gray-300 text-xs px-2 py-1 rounded">English</span>
-              <span class="bg-gray-800 text-gray-300 text-xs px-2 py-1 rounded">Spanish</span>
-              <span class="bg-gray-800 text-gray-300 text-xs px-2 py-1 rounded">French</span>
-              <span class="bg-gray-800 text-gray-300 text-xs px-2 py-1 rounded">German</span>
-              <span class="bg-gray-800 text-gray-300 text-xs px-2 py-1 rounded">Chinese</span>
-              <span class="bg-gray-800 text-gray-300 text-xs px-2 py-1 rounded">Japanese</span>
-              <span class="bg-gray-800 text-gray-300 text-xs px-2 py-1 rounded">Arabic</span>
-            </div>
-          </div>
-        </div>
+  <footer class="bg-black text-gray-400 py-12 border-t border-border-dark">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="flex items-center justify-center space-x-3 mb-6">
+        <i data-lucide="graduation-cap" class="w-8 h-8 text-accent-blue"></i>
+        <h3 class="text-2xl font-bold text-white">Ekeoha Miracle Chidindu</h3>
       </div>
-      
-      <div class="border-t border-gray-800 mt-16 pt-8 text-center text-gray-500">
-        <p>© 2023 GlobalSwift Worldwide Logistics. All rights reserved.</p>
-        <div class="mt-4 flex flex-wrap justify-center gap-6">
-          <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
-          <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
-          <a href="#" class="hover:text-white transition-colors">Shipping Terms</a>
-          <a href="#" class="hover:text-white transition-colors">Prohibited Items</a>
-          <a href="#" class="hover:text-white transition-colors">Careers</a>
-          <a href="#" class="hover:text-white transition-colors">Press Kit</a>
-          <a href="#" class="hover:text-white transition-colors">Investor Relations</a>
-        </div>
-        <div class="mt-4 flex justify-center space-x-8">
-          <div class="country-flag" style="background-image: url('https://flagcdn.com/us.svg');"></div>
-          <div class="country-flag" style="background-image: url('https://flagcdn.com/eu.svg');"></div>
-          <div class="country-flag" style="background-image: url('https://flagcdn.com/cn.svg');"></div>
-          <div class="country-flag" style="background-image: url('https://flagcdn.com/jp.svg');"></div>
-          <div class="country-flag" style="background-image: url('https://flagcdn.com/in.svg');"></div>
-          <div class="country-flag" style="background-image: url('https://flagcdn.com/br.svg');"></div>
-          <div class="country-flag" style="background-image: url('https://flagcdn.com/au.svg');"></div>
-          <div class="country-flag" style="background-image: url('https://flagcdn.com/ng.svg');"></div>
-        </div>
+      <p class="text-accent-cyan text-lg mb-4">
+        ND2 Electrical Engineering Student
+      </p>
+      <p class="text-text-secondary text-base">
+        Federal Polytechnic Nekede • School of Engineering and Technology
+      </p>
+      <div class="flex justify-center space-x-6 mt-6">
+        <a href="mailto:Miracleekeoha07@outlook.com" class="text-text-secondary hover:text-accent-cyan transition-colors">
+          <i class="fas fa-envelope text-lg"></i>
+        </a>
+        <a href="https://wa.me/2347016209767" target="_blank" class="text-green-400 hover:text-green-300 transition-colors">
+          <i class="fab fa-whatsapp text-xl"></i>
+        </a>
+        <a href="https://github.com/ekeohamiracle" target="_blank" class="text-text-secondary hover:text-white transition-colors">
+          <i class="fab fa-github text-lg"></i>
+        </a>
+      </div>
+      <p class="text-gray-500 text-sm mt-6">
+        © 2025 Ekeoha Miracle Chidindu. All rights reserved.
+      </p>
+      <div class="mt-4 flex items-center justify-center text-xs text-gray-500">
+        <i data-lucide="school" class="w-4 h-4 mr-1 text-accent-cyan"></i>
+        Proudly representing BrainStars Int'l Academy & Federal Polytechnic Nekede
       </div>
     </div>
   </footer>
 
   <script>
-    // Initialize network visualization
-    document.addEventListener('DOMContentLoaded', function() {
-      const container = document.getElementById('network-container');
-      if (!container) return;
-      
-      const width = container.offsetWidth;
-      const height = container.offsetHeight;
-      
-      // Create network nodes (major global hubs)
-      const hubs = [
-        { x: 0.2, y: 0.4, size: 20, color: '#3b82f6' },    // North America
-        { x: 0.45, y: 0.35, size: 18, color: '#22c55e' },  // Europe
-        { x: 0.65, y: 0.5, size: 16, color: '#f97316' },   // Middle East
-        { x: 0.75, y: 0.65, size: 18, color: '#8b5cf6' },  // Asia
-        { x: 0.35, y: 0.7, size: 14, color: '#ef4444' },   // South America
-        { x: 0.55, y: 0.85, size: 15, color: '#14b8a6' },  // Africa
-        { x: 0.85, y: 0.75, size: 16, color: '#eab308' },  // Australia
-      ];
-      
-      // Create nodes
-      hubs.forEach(hub => {
-        const node = document.createElement('div');
-        node.className = 'network-node';
-        node.style.left = `${hub.x * 100}%`;
-        node.style.top = `${hub.y * 100}%`;
-        node.style.width = `${hub.size}px`;
-        node.style.height = `${hub.size}px`;
-        node.style.background = hub.color;
-        node.style.boxShadow = `0 0 15px ${hub.color}`;
-        container.appendChild(node);
-      });
-      
-      // Create connections between hubs
-      for (let i = 0; i < hubs.length; i++) {
-        for (let j = i + 1; j < hubs.length; j++) {
-          const line = document.createElement('div');
-          line.className = 'network-line';
-          
-          const x1 = hubs[i].x * width;
-          const y1 = hubs[i].y * height;
-          const x2 = hubs[j].x * width;
-          const y2 = hubs[j].y * height;
-          
-          const length = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
-          const angle = Math.atan2(y2 - y1, x2 - x1) * 180 / Math.PI;
-          
-          line.style.width = `${length}px`;
-          line.style.left = `${x1}px`;
-          line.style.top = `${y1}px`;
-          line.style.transform = `rotate(${angle}deg)`;
-          
-          container.appendChild(line);
-        }
+    // Initialize lucide icons
+    lucide.createIcons();
+    
+    // Skills data
+    const skills = [
+      { name: 'Circuit Analysis & Design', icon: 'zap', level: 92 },
+      { name: 'Power Systems Engineering', icon: 'cog', level: 88 },
+      { name: 'Analog & Digital Electronics', icon: 'database', level: 90 },
+      { name: 'Control Systems', icon: 'cog', level: 85 },
+      { name: 'MATLAB & Simulink', icon: 'code', level: 82 },
+      { name: 'AutoCAD Electrical', icon: 'code', level: 86 },
+      { name: 'Renewable Energy Systems', icon: 'sun', level: 84 },
+      { name: 'PCB Design', icon: 'battery', level: 78 }
+    ];
+    
+    // Projects data
+    const projects = [
+      {
+        title: 'Smart Home Energy Management System',
+        description: 'Developed an IoT-based energy monitoring system that tracks real-time power consumption and provides optimization suggestions for household appliances.',
+        tech: ['Arduino', 'ESP32', 'Mobile App', 'Cloud Platform'],
+        image: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'
+      },
+      {
+        title: 'Automatic Solar Tracking System',
+        description: 'Designed and built a dual-axis solar tracker that maximizes solar panel efficiency by following the sun\'s position throughout the day.',
+        tech: ['LDR Sensors', 'Stepper Motors', 'Microcontroller', 'Solar Panels'],
+        image: 'https://images.unsplash.com/photo-1509391366360-2e959784a276?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'
+      },
+      {
+        title: 'Industrial Motor Control Panel',
+        description: 'Created a comprehensive motor control panel for industrial applications featuring overload protection, remote control, and status monitoring.',
+        tech: ['Contactors', 'Relays', 'PLC', 'HMI Interface'],
+        image: 'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'
+      },
+      {
+        title: 'Wireless Power Transmission Prototype',
+        description: 'Built a proof-of-concept wireless power transmission system using resonant inductive coupling for charging small electronic devices.',
+        tech: ['Coil Design', 'Resonant Circuits', 'RF Technology', 'Power Electronics'],
+        image: 'https://images.unsplash.com/photo-1611512347722-6a5a59193677?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'
       }
+    ];
+    
+    // Education data
+    const education = [
+      {
+        degree: 'National Diploma in Electrical/Electronics Engineering',
+        institution: 'Federal Polytechnic Nekede',
+        period: '2023 - Present',
+        location: 'Owerri, Imo State, Nigeria',
+        current: true,
+        image: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'
+      },
+      {
+        degree: 'West African Senior School Certificate (WASSCE)',
+        institution: 'BrainStars Int\'l Academy',
+        period: '2017 - 2023',
+        location: 'Ogbaku, Mbo Local Government, Imo State, Nigeria',
+        current: false,
+        image: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'
+      }
+    ];
+    
+    // Achievements data
+    const achievements = [
+      'Departmental Academic Excellence Award - ND1 (GPA: 3.8/4.0)',
+      'Best Student in Electrical Circuits Theory - ND1',
+      'Winner, Federal Polytechnic Nekede Engineering Innovation Challenge 2024',
+      'Leadership Award - BrainStars Int\'l Academy Academic Excellence',
+      'Member, Nigerian Society of Engineers (Student Chapter)',
+      'Certified in Basic Electronics and Circuit Design'
+    ];
+
+    // Render skills
+    const skillsContainer = document.getElementById('skills-container');
+    skills.forEach((skill, index) => {
+      const skillElement = document.createElement('div');
+      skillElement.className = 'bg-card-bg p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-border-dark';
+      skillElement.innerHTML = `
+        <div class="flex items-center mb-6">
+          <div class="w-12 h-12 bg-gradient-to-br from-blue-900/30 to-indigo-900/30 rounded-xl flex items-center justify-center mr-4 border border-blue-800/50">
+            <i data-lucide="${skill.icon}" class="w-6 h-6 text-accent-blue"></i>
+          </div>
+          <h3 class="text-lg font-bold text-text-primary">${skill.name}</h3>
+        </div>
+        <div class="w-full bg-border-dark rounded-full h-3">
+          <div 
+            class="bg-gradient-to-r from-accent-blue to-accent-purple h-3 rounded-full skill-bar"
+            style="width: 0%"
+            data-width="${skill.level}"
+          >
+            <span class="absolute -top-8 -right-2 text-xs font-bold text-text-secondary">${skill.level}%</span>
+          </div>
+        </div>
+      `;
+      skillsContainer.appendChild(skillElement);
+    });
+
+    // Render projects
+    const projectsContainer = document.getElementById('projects-container');
+    projects.forEach((project, index) => {
+      const projectElement = document.createElement('div');
+      projectElement.className = 'group bg-card-bg rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-border-dark';
+      projectElement.innerHTML = `
+        <div class="h-64 overflow-hidden">
+          <img 
+            src="${project.image}" 
+            alt="${project.title}"
+            class="w-full h-full object-cover transition-transform duration-700 project-image"
+          />
+        </div>
+        <div class="p-8">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-2xl font-bold text-text-primary group-hover:text-accent-cyan transition-colors">
+              ${project.title}
+            </h3>
+            <i data-lucide="lightbulb" class="w-6 h-6 text-yellow-400"></i>
+          </div>
+          <p class="text-text-secondary mb-6 leading-relaxed">
+            ${project.description}
+          </p>
+          <div class="flex flex-wrap gap-2">
+            ${project.tech.map(tech => `
+              <span class="bg-blue-900/40 text-accent-cyan text-sm px-3 py-1 rounded-full font-medium border border-blue-800/30">
+                ${tech}
+              </span>
+            `).join('')}
+          </div>
+        </div>
+      `;
+      projectsContainer.appendChild(projectElement);
+    });
+
+    // Render education
+    const educationContainer = document.getElementById('education-container');
+    education.forEach((edu, index) => {
+      const eduElement = document.createElement('div');
+      eduElement.className = 'bg-card-bg rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 border border-border-dark';
+      eduElement.innerHTML = `
+        <div class="md:flex">
+          <div class="md:w-2/5">
+            <img 
+              src="${edu.image}" 
+              alt="${edu.institution}"
+              class="w-full h-64 md:h-full object-cover"
+            />
+          </div>
+          <div class="md:w-3/5 p-8">
+            <div class="flex justify-between items-start mb-4">
+              <div>
+                <h3 class="text-2xl font-bold text-text-primary mb-2">${edu.degree}</h3>
+                <p class="text-lg text-text-secondary font-medium">${edu.institution}</p>
+              </div>
+              ${edu.current ? `
+                <span class="bg-gradient-to-r from-green-500 to-emerald-500 text-black text-xs px-3 py-1 rounded-full font-semibold border border-green-400">
+                  Currently Studying
+                </span>
+              ` : ''}
+            </div>
+            <p class="text-text-secondary mb-6 text-lg leading-relaxed">
+              Location: ${edu.location}
+            </p>
+            <div class="flex items-center text-text-secondary mb-4">
+              <i data-lucide="calendar" class="w-5 h-5 mr-2 text-accent-blue"></i>
+              <span class="text-lg">${edu.period}</span>
+            </div>
+            ${index === 0 ? `
+              <div class="bg-blue-900/30 border-l-4 border-accent-blue p-4 rounded-r-lg">
+                <p class="text-blue-200 italic">
+                  "The School of Engineering and Technology at Federal Polytechnic Nekede provides world-class 
+                  technical education and hands-on training in electrical engineering disciplines."
+                </p>
+              </div>
+            ` : ''}
+            ${index === 1 ? `
+              <div class="bg-green-900/30 border-l-4 border-green-500 p-4 rounded-r-lg">
+                <p class="text-green-200 italic">
+                  "BrainStars International Academy provided me with a strong foundation in sciences and mathematics, 
+                  preparing me excellently for my engineering journey."
+                </p>
+              </div>
+            ` : ''}
+          </div>
+        </div>
+      `;
+      educationContainer.appendChild(eduElement);
+    });
+
+    // Render achievements
+    const achievementsContainer = document.getElementById('achievements-container');
+    achievements.forEach((achievement, index) => {
+      const achievementElement = document.createElement('div');
+      achievementElement.className = 'flex items-start space-x-4 bg-card-bg p-6 rounded-2xl shadow-md hover:shadow-lg transition-shadow border border-border-dark';
+      achievementElement.innerHTML = `
+        <div class="w-10 h-10 bg-gradient-to-br from-yellow-500 to-amber-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+          <i data-lucide="award" class="w-5 h-5 text-black"></i>
+        </div>
+        <p class="text-text-primary font-medium text-lg">${achievement}</p>
+      `;
+      achievementsContainer.appendChild(achievementElement);
+    });
+
+    // Animate skill bars when in view
+    document.addEventListener('DOMContentLoaded', () => {
+      const skillBars = document.querySelectorAll('.skill-bar');
+      const animateSkillBars = () => {
+        skillBars.forEach(bar => {
+          const width = bar.getAttribute('data-width');
+          bar.style.width = `${width}%`;
+        });
+      };
       
-      // Simple animation for elements on scroll
+      // Check if skills section is in view
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
-            entry.target.style.animation = `slide-up 0.6s ease-out forwards`;
+            animateSkillBars();
             observer.unobserve(entry.target);
           }
         });
       }, { threshold: 0.1 });
       
-      // Observe elements with fade-up animation
-      document.querySelectorAll('.card-hover, .feature-card, .stat-card, .price-card, .testimonial-card, .step-card').forEach(card => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(20px)';
-        observer.observe(card);
-      });
+      const skillsSection = document.getElementById('skills');
+      if (skillsSection) {
+        observer.observe(skillsSection);
+      }
       
-      // Navbar scroll effect
-      window.addEventListener('scroll', function() {
-        const nav = document.querySelector('nav');
-        if (window.scrollY > 50) {
-          nav.classList.add('shadow-lg');
-          nav.classList.remove('bg-white/80');
-          nav.classList.add('bg-white');
-        } else {
-          nav.classList.remove('shadow-lg');
-          nav.classList.add('bg-white/80');
-          nav.classList.remove('bg-white');
+      // Initialize lucide icons again for dynamically added content
+      setTimeout(() => {
+        lucide.createIcons();
+      }, 100);
+    });
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
         }
       });
     });
