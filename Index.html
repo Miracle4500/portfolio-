@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ekeoha Miracle Chidindu | Electrical Engineering Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'gradient-start': '#3b82f6',
+            'gradient-end': '#8b5cf6',
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      scroll-behavior: smooth;
+    }
+    .hero-bg {
+      background: linear-gradient(90deg, rgba(59, 130, 246, 0.05) 0%, rgba(139, 92, 246, 0.05) 100%);
+    }
+    .about-bg {
+      background: linear-gradient(135deg, rgba(241, 245, 249, 0.5) 0%, rgba(224, 231, 255, 0.3) 100%);
+    }
+    .skills-bg {
+      background: linear-gradient(135deg, rgba(243, 244, 246, 0.8) 0%, rgba(219, 234, 254, 0.3) 100%);
+    }
+    .education-bg {
+      background: linear-gradient(135deg, rgba(219, 234, 254, 0.5) 0%, rgba(224, 231, 255, 0.3) 100%);
+    }
+    .contact-bg {
+      background: linear-gradient(90deg, #3b82f6, #8b5cf6, #7c3aed);
+    }
+    .skill-bar {
+      transition: width 1.5s ease-out !important;
+      position: relative;
+    }
+    .project-card:hover .project-image {
+      transform: scale(1.05);
+    }
+    .floating-badge {
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(251, 191, 36, 0.7); }
+      70% { box-shadow: 0 0 0 10px rgba(251, 191, 36, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(251, 191, 36, 0); }
+    }
+    .grid-pattern {
+      background-image: radial-gradient(rgb(59, 130, 246, 0.1) 1px, transparent 1px);
+      background-size: 20px 20px;
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 min-h-screen">
+  
+  <!-- Header -->
+  <header class="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50 border-b border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center py-4">
+        <div class="flex items-center space-x-4">
+          <div class="w-12 h-12 bg-gradient-to-br from-blue-600 to-indigo-700 rounded-xl flex items-center justify-center shadow-lg">
+            <i data-lucide="graduation-cap" class="w-7 h-7 text-white"></i>
+          </div>
+          <div>
+            <h1 class="text-xl font-bold text-gray-900">Ekeoha Miracle Chidindu</h1>
+            <p class="text-sm text-gray-600">Electrical Engineering Student | ND2</p>
+          </div>
+        </div>
+        <nav class="hidden md:flex space-x-8">
+          <a href="#about" class="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200">About</a>
+          <a href="#skills" class="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200">Skills</a>
+          <a href="#projects" class="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200">Projects</a>
+          <a href="#education" class="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200">Education</a>
+          <a href="#contact" class="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200">Contact</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden hero-bg">
+    <div class="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-indigo-600/10"></div>
+    <div class="max-w-7xl mx-auto relative z-10">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div class="space-y-8">
+          <div class="inline-flex items-center bg-gradient-to-r from-blue-100 to-indigo-100 text-blue-800 px-6 py-2 rounded-full text-sm font-semibold border border-blue-200 shadow-sm">
+            <i data-lucide="award" class="w-4 h-4 mr-2"></i>
+            ND2 Electrical Engineering Student
+          </div>
+          <h1 class="text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
+            Hello, I'm <span class="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">Ekeoha Miracle Chidindu</span>
+          </h1>
+          <p class="text-xl text-gray-600 leading-relaxed max-w-2xl">
+            Passionate electrical engineering student at Federal Polytechnic Nekede, specializing in 
+            power systems, renewable energy, and innovative electrical solutions. Committed to excellence 
+            and driven by curiosity to solve real-world engineering challenges.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a href="#contact" class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-8 py-4 rounded-xl font-semibold hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center group">
+              Get In Touch
+              <i data-lucide="chevron-right" class="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
+            </a>
+            <a href="#projects" class="border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-xl font-semibold hover:border-blue-600 hover:text-blue-600 hover:shadow-md transition-all duration-300">
+              View Projects
+            </a>
+          </div>
+        </div>
+        <div class="flex justify-center">
+          <div class="relative">
+            <div class="w-96 h-96 bg-gradient-to-br from-blue-500 via-indigo-600 to-purple-700 rounded-2xl flex items-center justify-center shadow-2xl transform rotate-3">
+              <div class="w-88 h-88 bg-white rounded-2xl flex items-center justify-center shadow-inner">
+                <div class="text-center p-6">
+                  <i data-lucide="graduation-cap" class="w-20 h-20 text-blue-600 mx-auto mb-6"></i>
+                  <h3 class="text-3xl font-bold text-gray-800 mb-2">Ekeoha M. Chidindu</h3>
+                  <p class="text-lg text-gray-600">ND2 Electrical Engineering</p>
+                  <div class="mt-4 flex items-center justify-center text-sm text-gray-500">
+                    <i data-lucide="school" class="w-4 h-4 mr-1"></i>
+                    Federal Polytechnic Nekede
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="absolute -top-6 -right-6 bg-gradient-to-r from-yellow-400 to-orange-500 text-gray-900 px-6 py-3 rounded-xl font-bold shadow-lg floating-badge">
+              <span class="text-sm block">Academic</span>
+              <span class="text-2xl">ND2</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="py-20 bg-white relative about-bg">
+    <div class="absolute inset-0 bg-gradient-to-br from-blue-50/50 to-indigo-50/50"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-gray-900 mb-6">About Me</h2>
+        <div class="w-24 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 mx-auto rounded-full"></div>
+        <p class="text-gray-600 text-lg mt-6 max-w-3xl mx-auto">
+          From my foundational years at BrainStars International Academy to my current journey at Federal Polytechnic Nekede, 
+          I've cultivated a deep passion for electrical engineering and its transformative potential.
+        </p>
+      </div>
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div class="space-y-6">
+          <p class="text-gray-700 text-lg leading-relaxed">
+            I am a dedicated National Diploma Year 2 (ND2) student in Electrical/Electronics Engineering 
+            at the prestigious School of Engineering and Technology, Federal Polytechnic Nekede. My academic 
+            foundation was built at <span class="font-semibold text-blue-600">BrainStars International Academy, Ogbaku</span>, 
+            where I developed strong analytical skills and a love for problem-solving.
+          </p>
+          <p class="text-gray-700 text-lg leading-relaxed">
+            Throughout my studies, I've maintained academic excellence while actively engaging in hands-on 
+            projects that bridge theoretical knowledge with practical applications. My interests span across 
+            renewable energy systems, power distribution networks, control systems, and innovative electronic 
+            circuit design.
+          </p>
+          <p class="text-gray-700 text-lg leading-relaxed">
+            I am committed to continuous learning and professional development, always seeking opportunities 
+            to contribute meaningfully to the engineering community and address real-world challenges through 
+            innovative electrical engineering solutions.
+          </p>
+        </div>
+        <div class="space-y-8">
+          <div class="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 rounded-2xl border border-blue-200">
+            <div class="flex items-center mb-4">
+              <i data-lucide="building" class="w-8 h-8 text-blue-600 mr-4"></i>
+              <div>
+                <h4 class="font-bold text-gray-900 text-lg">Current Institution</h4>
+                <p class="text-gray-600">Federal Polytechnic Nekede</p>
+              </div>
+            </div>
+            <img 
+              src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+              alt="Federal Polytechnic Nekede"
+              class="w-full h-32 object-cover rounded-lg mt-4 border border-blue-300"
+            />
+          </div>
+          <div class="bg-gradient-to-r from-green-50 to-emerald-50 p-6 rounded-2xl border border-green-200">
+            <div class="flex items-center mb-4">
+              <i data-lucide="book-open" class="w-8 h-8 text-green-600 mr-4"></i>
+              <div>
+                <h4 class="font-bold text-gray-900 text-lg">Alma Mater</h4>
+                <p class="text-gray-600">BrainStars Int'l Academy, Ogbaku</p>
+              </div>
+            </div>
+            <img 
+              src="https://images.unsplash.com/photo-1509062522246-3755977927d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+              alt="BrainStars International Academy"
+              class="w-full h-32 object-cover rounded-lg mt-4 border border-green-300"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="py-20 skills-bg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-gray-900 mb-6">Technical Skills</h2>
+        <div class="w-24 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 mx-auto rounded-full"></div>
+        <p class="text-gray-600 text-lg mt-6 max-w-2xl mx-auto">
+          My technical expertise spans across core electrical engineering disciplines with hands-on experience in modern tools and technologies.
+        </p>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <!-- Skills will be populated by JavaScript -->
+        <div id="skills-container" class="col-span-full grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <!-- Skills will be inserted here -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-gray-900 mb-6">Featured Projects</h2>
+        <div class="w-24 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 mx-auto rounded-full"></div>
+        <p class="text-gray-600 text-lg mt-6 max-w-2xl mx-auto">
+          Innovative engineering solutions that demonstrate my technical capabilities and problem-solving approach.
+        </p>
+      </div>
+      <div class="grid md:grid-cols-2 gap-12" id="projects-container">
+        <!-- Projects will be inserted here -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Education Section -->
+  <section id="education" class="py-20 education-bg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-gray-900 mb-6">Educational Journey</h2>
+        <div class="w-24 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 mx-auto rounded-full"></div>
+        <p class="text-gray-600 text-lg mt-6 max-w-2xl mx-auto">
+          My academic path from secondary school to higher education in electrical engineering.
+        </p>
+      </div>
+      <div class="max-w-5xl mx-auto space-y-12" id="education-container">
+        <!-- Education items will be inserted here -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Achievements Section -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-gray-900 mb-6">Achievements & Recognition</h2>
+        <div class="w-24 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 mx-auto rounded-full"></div>
+        <p class="text-gray-600 text-lg mt-6 max-w-2xl mx-auto">
+          Academic excellence and recognition throughout my educational journey.
+        </p>
+      </div>
+      <div class="max-w-4xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-6" id="achievements-container">
+          <!-- Achievements will be inserted here -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-20 contact-bg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-white mb-6">Get In Touch</h2>
+        <p class="text-blue-100 text-xl">I'm always open to discussing new opportunities, projects, and collaborations</p>
+      </div>
+      <div class="max-w-5xl mx-auto">
+        <div class="grid md:grid-cols-3 gap-8 text-center">
+          <div class="bg-white/10 backdrop-blur-sm p-8 rounded-2xl border border-white/20 hover:bg-white/20 transition-all duration-300">
+            <i data-lucide="mail" class="w-12 h-12 text-white mx-auto mb-6"></i>
+            <h3 class="text-white font-bold text-xl mb-3">Email</h3>
+            <p class="text-blue-100 text-lg break-words">ekeohamiracle@email.com</p>
+          </div>
+          <div class="bg-white/10 backdrop-blur-sm p-8 rounded-2xl border border-white/20 hover:bg-white/20 transition-all duration-300">
+            <i data-lucide="linkedin" class="w-12 h-12 text-white mx-auto mb-6"></i>
+            <h3 class="text-white font-bold text-xl mb-3">LinkedIn</h3>
+            <p class="text-blue-100 text-lg break-words">linkedin.com/in/ekeohamiracle</p>
+          </div>
+          <div class="bg-white/10 backdrop-blur-sm p-8 rounded-2xl border border-white/20 hover:bg-white/20 transition-all duration-300">
+            <i data-lucide="github" class="w-12 h-12 text-white mx-auto mb-6"></i>
+            <h3 class="text-white font-bold text-xl mb-3">GitHub</h3>
+            <p class="text-blue-100 text-lg break-words">github.com/ekeohamiracle</p>
+          </div>
+        </div>
+        <div class="text-center mt-12">
+          <a 
+            href="#" 
+            class="inline-flex items-center bg-white text-blue-600 font-bold px-8 py-4 rounded-xl hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl group"
+          >
+            <i data-lucide="file-text" class="w-6 h-6 mr-3 group-hover:scale-110 transition-transform"></i>
+            Download My Resume
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="flex items-center justify-center space-x-3 mb-6">
+        <i data-lucide="graduation-cap" class="w-8 h-8 text-blue-400"></i>
+        <h3 class="text-2xl font-bold">Ekeoha Miracle Chidindu</h3>
+      </div>
+      <p class="text-gray-400 text-lg mb-4">
+        ND2 Electrical Engineering Student
+      </p>
+      <p class="text-gray-500 text-base">
+        Federal Polytechnic Nekede • School of Engineering and Technology
+      </p>
+      <p class="text-gray-600 text-sm mt-6">
+        © 2025 Ekeoha Miracle Chidindu. All rights reserved.
+      </p>
+      <div class="mt-4 flex items-center justify-center text-xs text-gray-500">
+        <i data-lucide="school" class="w-4 h-4 mr-1"></i>
+        Proudly representing BrainStars Int'l Academy & Federal Polytechnic Nekede
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Initialize lucide icons
+    lucide.createIcons();
+    
+    // Skills data
+    const skills = [
+      { name: 'Circuit Analysis & Design', icon: 'zap', level: 92 },
+      { name: 'Power Systems Engineering', icon: 'cog', level: 88 },
+      { name: 'Analog & Digital Electronics', icon: 'database', level: 90 },
+      { name: 'Control Systems', icon: 'cog', level: 85 },
+      { name: 'MATLAB & Simulink', icon: 'code', level: 82 },
+      { name: 'AutoCAD Electrical', icon: 'code', level: 86 },
+      { name: 'Renewable Energy Systems', icon: 'sun', level: 84 },
+      { name: 'PCB Design', icon: 'battery', level: 78 }
+    ];
+    
+    // Projects data
+    const projects = [
+      {
+        title: 'Smart Home Energy Management System',
+        description: 'Developed an IoT-based energy monitoring system that tracks real-time power consumption and provides optimization suggestions for household appliances.',
+        tech: ['Arduino', 'ESP32', 'Mobile App', 'Cloud Platform'],
+        image: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'
+      },
+      {
+        title: 'Automatic Solar Tracking System',
+        description: 'Designed and built a dual-axis solar tracker that maximizes solar panel efficiency by following the sun\'s position throughout the day.',
+        tech: ['LDR Sensors', 'Stepper Motors', 'Microcontroller', 'Solar Panels'],
+        image: 'https://images.unsplash.com/photo-1509391366360-2e959784a276?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'
+      },
+      {
+        title: 'Industrial Motor Control Panel',
+        description: 'Created a comprehensive motor control panel for industrial applications featuring overload protection, remote control, and status monitoring.',
+        tech: ['Contactors', 'Relays', 'PLC', 'HMI Interface'],
+        image: 'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'
+      },
+      {
+        title: 'Wireless Power Transmission Prototype',
+        description: 'Built a proof-of-concept wireless power transmission system using resonant inductive coupling for charging small electronic devices.',
+        tech: ['Coil Design', 'Resonant Circuits', 'RF Technology', 'Power Electronics'],
+        image: 'https://images.unsplash.com/photo-1611512347722-6a5a59193677?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'
+      }
+    ];
+    
+    // Education data
+    const education = [
+      {
+        degree: 'National Diploma in Electrical/Electronics Engineering',
+        institution: 'Federal Polytechnic Nekede',
+        period: '2023 - Present',
+        location: 'Owerri, Imo State, Nigeria',
+        current: true,
+        image: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'
+      },
+      {
+        degree: 'West African Senior School Certificate (WASSCE)',
+        institution: 'BrainStars Int\'l Academy',
+        period: '2017 - 2023',
+        location: 'Ogbaku, Mbo Local Government, Imo State, Nigeria',
+        current: false,
+        image: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'
+      }
+    ];
+    
+    // Achievements data
+    const achievements = [
+      'Departmental Academic Excellence Award - ND1 (GPA: 3.8/4.0)',
+      'Best Student in Electrical Circuits Theory - ND1',
+      'Winner, Federal Polytechnic Nekede Engineering Innovation Challenge 2024',
+      'Leadership Award - BrainStars Int\'l Academy Academic Excellence',
+      'Member, Nigerian Society of Engineers (Student Chapter)',
+      'Certified in Basic Electronics and Circuit Design'
+    ];
+
+    // Render skills
+    const skillsContainer = document.getElementById('skills-container');
+    skills.forEach((skill, index) => {
+      const skillElement = document.createElement('div');
+      skillElement.className = 'bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-gray-100';
+      skillElement.innerHTML = `
+        <div class="flex items-center mb-6">
+          <div class="w-12 h-12 bg-gradient-to-br from-blue-100 to-indigo-100 rounded-xl flex items-center justify-center mr-4">
+            <i data-lucide="${skill.icon}" class="w-6 h-6 text-blue-600"></i>
+          </div>
+          <h3 class="text-lg font-bold text-gray-900">${skill.name}</h3>
+        </div>
+        <div class="w-full bg-gray-200 rounded-full h-3">
+          <div 
+            class="bg-gradient-to-r from-blue-500 to-indigo-600 h-3 rounded-full skill-bar"
+            style="width: 0%"
+            data-width="${skill.level}"
+          >
+            <span class="absolute -top-8 -right-2 text-xs font-bold text-gray-700">${skill.level}%</span>
+          </div>
+        </div>
+      `;
+      skillsContainer.appendChild(skillElement);
+    });
+
+    // Render projects
+    const projectsContainer = document.getElementById('projects-container');
+    projects.forEach((project, index) => {
+      const projectElement = document.createElement('div');
+      projectElement.className = 'group bg-gradient-to-br from-gray-50 to-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2';
+      projectElement.innerHTML = `
+        <div class="h-64 overflow-hidden">
+          <img 
+            src="${project.image}" 
+            alt="${project.title}"
+            class="w-full h-full object-cover transition-transform duration-700 project-image"
+          />
+        </div>
+        <div class="p-8">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-2xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors">
+              ${project.title}
+            </h3>
+            <i data-lucide="lightbulb" class="w-6 h-6 text-yellow-500"></i>
+          </div>
+          <p class="text-gray-600 mb-6 leading-relaxed">
+            ${project.description}
+          </p>
+          <div class="flex flex-wrap gap-2">
+            ${project.tech.map(tech => `
+              <span class="bg-gradient-to-r from-blue-100 to-indigo-100 text-blue-800 text-sm px-3 py-1 rounded-full font-medium border border-blue-200">
+                ${tech}
+              </span>
+            `).join('')}
+          </div>
+        </div>
+      `;
+      projectsContainer.appendChild(projectElement);
+    });
+
+    // Render education
+    const educationContainer = document.getElementById('education-container');
+    education.forEach((edu, index) => {
+      const eduElement = document.createElement('div');
+      eduElement.className = 'bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300';
+      eduElement.innerHTML = `
+        <div class="md:flex">
+          <div class="md:w-2/5">
+            <img 
+              src="${edu.image}" 
+              alt="${edu.institution}"
+              class="w-full h-64 md:h-full object-cover"
+            />
+          </div>
+          <div class="md:w-3/5 p-8">
+            <div class="flex justify-between items-start mb-4">
+              <div>
+                <h3 class="text-2xl font-bold text-gray-900 mb-2">${edu.degree}</h3>
+                <p class="text-lg text-gray-700 font-medium">${edu.institution}</p>
+              </div>
+              ${edu.current ? `
+                <span class="bg-gradient-to-r from-green-400 to-emerald-500 text-white text-xs px-3 py-1 rounded-full font-semibold">
+                  Currently Studying
+                </span>
+              ` : ''}
+            </div>
+            <p class="text-gray-600 mb-6 text-lg leading-relaxed">
+              Location: ${edu.location}
+            </p>
+            <div class="flex items-center text-gray-500 mb-4">
+              <i data-lucide="calendar" class="w-5 h-5 mr-2"></i>
+              <span class="text-lg">${edu.period}</span>
+            </div>
+            ${index === 0 ? `
+              <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r-lg">
+                <p class="text-blue-800 italic">
+                  "The School of Engineering and Technology at Federal Polytechnic Nekede provides world-class 
+                  technical education and hands-on training in electrical engineering disciplines."
+                </p>
+              </div>
+            ` : ''}
+            ${index === 1 ? `
+              <div class="bg-green-50 border-l-4 border-green-500 p-4 rounded-r-lg">
+                <p class="text-green-800 italic">
+                  "BrainStars International Academy provided me with a strong foundation in sciences and mathematics, 
+                  preparing me excellently for my engineering journey."
+                </p>
+              </div>
+            ` : ''}
+          </div>
+        </div>
+      `;
+      educationContainer.appendChild(eduElement);
+    });
+
+    // Render achievements
+    const achievementsContainer = document.getElementById('achievements-container');
+    achievements.forEach((achievement, index) => {
+      const achievementElement = document.createElement('div');
+      achievementElement.className = 'flex items-start space-x-4 bg-gradient-to-r from-gray-50 to-white p-6 rounded-2xl shadow-md hover:shadow-lg transition-shadow border border-gray-100';
+      achievementElement.innerHTML = `
+        <div class="w-10 h-10 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+          <i data-lucide="award" class="w-5 h-5 text-white"></i>
+        </div>
+        <p class="text-gray-800 font-medium text-lg">${achievement}</p>
+      `;
+      achievementsContainer.appendChild(achievementElement);
+    });
+
+    // Animate skill bars when in view
+    document.addEventListener('DOMContentLoaded', () => {
+      const skillBars = document.querySelectorAll('.skill-bar');
+      const animateSkillBars = () => {
+        skillBars.forEach(bar => {
+          const width = bar.getAttribute('data-width');
+          bar.style.width = `${width}%`;
+        });
+      };
+      
+      // Check if skills section is in view
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            animateSkillBars();
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      
+      const skillsSection = document.getElementById('skills');
+      if (skillsSection) {
+        observer.observe(skillsSection);
+      }
+      
+      // Initialize lucide icons again for dynamically added content
+      setTimeout(() => {
+        lucide.createIcons();
+      }, 100);
+    });
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
