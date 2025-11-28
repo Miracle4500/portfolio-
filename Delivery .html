@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RunQuick | Lightning-Fast Running Deliveries</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'primary': '#6366f1',
+            'secondary': '#8b5cf6',
+            'accent': '#ec4899',
+            'dark': '#0f172a',
+            'light': '#f8fafc',
+            'success': '#10b981',
+            'warning': '#f59e0b',
+            'danger': '#ef4444'
+          },
+          animation: {
+            'float': 'float 6s ease-in-out infinite',
+            'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'slide-up': 'slide-up 0.5s ease-out forwards'
+          },
+          keyframes: {
+            'float': {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-10px)' }
+            },
+            'slide-up': {
+              '0%': { opacity: '0', transform: 'translateY(20px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' }
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    * {
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      background: linear-gradient(135deg, #f0f9ff 0%, #fef2f2 100%);
+      color: #1e293b;
+    }
+    
+    .hero-bg {
+      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+      clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    }
+    
+    .card-hover {
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+    
+    .card-hover:hover {
+      transform: translateY(-10px) scale(1.03);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+    
+    .feature-card {
+      background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(240, 249, 255, 0.9) 100%);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(99, 102, 241, 0.2);
+    }
+    
+    .stat-card {
+      background: linear-gradient(135deg, rgba(255,255,255,0.85) 0%, rgba(243, 244, 246, 0.85) 100%);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(226, 232, 240, 0.6);
+    }
+    
+    .runner-badge {
+      animation: pulse 2s infinite;
+      box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.7);
+    }
+    
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.7); }
+      70% { box-shadow: 0 0 0 12px rgba(99, 102, 241, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0); }
+    }
+    
+    .glow-button {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .glow-button::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 70%);
+      transform: scale(0);
+      transition: transform 0.5s ease-out;
+      z-index: 0;
+    }
+    
+    .glow-button:hover::before {
+      transform: scale(1);
+    }
+    
+    .glow-button span {
+      position: relative;
+      z-index: 1;
+    }
+    
+    .testimonial-card {
+      background: linear-gradient(135deg, rgba(255,255,255,0.8) 0%, rgba(240, 249, 255, 0.8) 100%);
+      border-left: 4px solid #6366f1;
+    }
+    
+    .map-container {
+      background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+      border-radius: 24px;
+      overflow: hidden;
+    }
+    
+    .pulse-ring {
+      display: inline-block;
+      border-radius: 50%;
+      border: 3px solid #6366f1;
+      animation: pulse-ring 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
+    }
+    
+    @keyframes pulse-ring {
+      0% { transform: scale(0.8); opacity: 1; }
+      100% { transform: scale(2.4); opacity: 0; }
+    }
+    
+    .section-title {
+      position: relative;
+      display: inline-block;
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(90deg, #6366f1, #8b5cf6);
+      border-radius: 2px;
+    }
+    
+    .price-card {
+      background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(240, 249, 255, 0.9) 100%);
+      transition: all 0.4s ease;
+      border: 2px solid transparent;
+      background-clip: padding-box;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .price-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(45deg, #6366f1, #8b5cf6, #ec4899, #6366f1);
+      z-index: -1;
+      padding: 2px;
+      border-radius: 20px;
+      background-clip: content-box;
+      -webkit-mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+      mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+    }
+    
+    .price-card.popular {
+      transform: scale(1.05);
+      z-index: 10;
+    }
+    
+    .price-card:hover {
+      transform: translateY(-5px);
+    }
+    
+    .step-card {
+      background: linear-gradient(135deg, rgba(255,255,255,0.8) 0%, rgba(240, 249, 255, 0.8) 100%);
+      border: 1px solid rgba(99, 102, 241, 0.2);
+    }
+    
+    .step-number {
+      background: linear-gradient(135deg, #6366f1, #8b5cf6);
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      color: white;
+      font-weight: bold;
+      font-size: 1.25rem;
+      box-shadow: 0 4px 10px rgba(99, 102, 241, 0.4);
+    }
+  </style>
+</head>
+<body class="min-h-screen">
+  <!-- Navigation -->
+  <nav class="fixed w-full bg-white/80 backdrop-blur-md z-50 shadow-sm py-3 px-4 md:px-8">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+      <a href="#" class="flex items-center space-x-3">
+        <div class="bg-gradient-to-r from-primary to-secondary p-2 rounded-xl">
+          <i class="fas fa-shoe-prints text-white text-2xl"></i>
+        </div>
+        <span class="text-xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">RunQuick</span>
+      </a>
+      <div class="hidden md:flex items-center space-x-10">
+        <a href="#how-it-works" class="font-medium hover:text-primary transition-colors">How It Works</a>
+        <a href="#services" class="font-medium hover:text-primary transition-colors">Services</a>
+        <a href="#pricing" class="font-medium hover:text-primary transition-colors">Pricing</a>
+        <a href="#track" class="font-medium hover:text-primary transition-colors">Track Order</a>
+      </div>
+      <button class="bg-gradient-to-r from-primary to-secondary text-white px-6 py-3 rounded-xl font-bold hover:opacity-90 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
+        Order Now
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-bg pt-32 pb-20 px-4 md:px-8">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div class="space-y-8 text-white">
+        <div class="flex items-center space-x-3">
+          <div class="runner-badge bg-white/20 backdrop-blur-sm text-white px-4 py-1.5 rounded-full font-medium flex items-center space-x-2">
+            <i class="fas fa-bolt"></i>
+            <span>Delivery in 15 mins</span>
+          </div>
+        </div>
+        <h1 class="text-4xl md:text-6xl font-bold leading-tight">
+          Lightning-Fast Running Deliveries <span class="text-yellow-300">Across Nigeria</span>
+        </h1>
+        <p class="text-xl text-blue-50/90 max-w-2xl">
+          Need something delivered urgently? Our professional runners will get your packages, documents, or food to their destination in record time with real-time tracking.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="#order" class="glow-button bg-white text-primary font-bold px-8 py-4 rounded-xl text-lg hover:shadow-xl transition-all transform hover:-translate-y-1">
+            <span>Get Started</span> <i class="fas fa-arrow-right ml-2"></i>
+          </a>
+          <a href="#how-it-works" class="bg-blue-500/20 backdrop-blur-sm text-white font-bold px-8 py-4 rounded-xl text-lg border border-white/30 hover:bg-blue-500/30 transition-all">
+            How It Works
+          </a>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 pt-6">
+          <div class="text-center">
+            <div class="text-3xl font-bold">10K+</div>
+            <div class="text-blue-100">Deliveries</div>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl font-bold">4.9</div>
+            <div class="text-blue-100">Rating</div>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl font-bold">15 min</div>
+            <div class="text-blue-100">Avg. Time</div>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl font-bold">200+</div>
+            <div class="text-blue-100">Runners</div>
+          </div>
+        </div>
+      </div>
+      <div class="relative hidden lg:block">
+        <div class="absolute -inset-4 bg-gradient-to-r from-primary to-secondary rounded-full opacity-20 blur-3xl"></div>
+        <div class="relative bg-white rounded-3xl shadow-2xl overflow-hidden border border-white/20">
+          <img src="https://images.unsplash.com/photo-1598808906342-0935f4789865?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Runner with package" class="w-full h-full object-cover">
+          <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6 text-white">
+            <div class="flex items-center space-x-4">
+              <div class="w-12 h-12 rounded-full border-2 border-white overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Runner" class="w-full h-full object-cover">
+              </div>
+              <div>
+                <p class="font-bold">Michael is delivering your package</p>
+                <div class="flex items-center space-x-2 mt-1">
+                  <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                  <span>2.3km away • ETA: 8 mins</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="absolute -bottom-6 -right-6 bg-white p-4 rounded-2xl shadow-xl border-2 border-dashed border-primary">
+          <div class="text-center">
+            <div class="text-2xl font-bold text-primary">24/7</div>
+            <div class="text-sm font-medium text-gray-600">Available</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section id="how-it-works" class="py-20 px-4 md:px-8 bg-white/50">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="section-title text-4xl font-bold text-gray-900 mb-4">How RunQuick Works</h2>
+        <p class="text-gray-600 text-lg max-w-2xl mx-auto">Our streamlined process makes delivery simple, fast, and reliable</p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div class="step-card rounded-2xl p-8 text-center card-hover">
+          <div class="flex justify-center mb-6">
+            <div class="step-number">1</div>
+          </div>
+          <i class="fas fa-mobile-alt text-primary text-4xl mb-4"></i>
+          <h3 class="text-xl font-bold mb-2">Place Order</h3>
+          <p class="text-gray-600">Enter pickup & delivery details in our app or website</p>
+        </div>
+        
+        <div class="step-card rounded-2xl p-8 text-center card-hover">
+          <div class="flex justify-center mb-6">
+            <div class="step-number">2</div>
+          </div>
+          <i class="fas fa-user-friends text-secondary text-4xl mb-4"></i>
+          <h3 class="text-xl font-bold mb-2">Runner Assigned</h3>
+          <p class="text-gray-600">A nearby vetted runner accepts your order instantly</p>
+        </div>
+        
+        <div class="step-card rounded-2xl p-8 text-center card-hover">
+          <div class="flex justify-center mb-6">
+            <div class="step-number">3</div>
+          </div>
+          <i class="fas fa-shoe-prints text-accent text-4xl mb-4"></i>
+          <h3 class="text-xl font-bold mb-2">Pick & Deliver</h3>
+          <p class="text-gray-600">Runner picks up and delivers your package with care</p>
+        </div>
+        
+        <div class="step-card rounded-2xl p-8 text-center card-hover">
+          <div class="flex justify-center mb-6">
+            <div class="step-number">4</div>
+          </div>
+          <i class="fas fa-check-circle text-success text-4xl mb-4"></i>
+          <h3 class="text-xl font-bold mb-2">Done!</h3>
+          <p class="text-gray-600">Receive confirmation and rate your experience</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services" class="py-20 px-4 md:px-8">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="section-title text-4xl font-bold text-gray-900 mb-4">Our Services</h2>
+        <p class="text-gray-600 text-lg max-w-2xl mx-auto">Specialized delivery solutions for every need</p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+        <div class="feature-card rounded-2xl p-8 card-hover">
+          <div class="w-16 h-16 bg-gradient-to-r from-primary to-secondary rounded-2xl flex items-center justify-center mb-6">
+            <i class="fas fa-utensils text-white text-2xl"></i>
+          </div>
+          <h3 class="text-2xl font-bold mb-3">Food Delivery</h3>
+          <p class="text-gray-600 mb-6">Hot meals delivered fast while they're still fresh and delicious. Perfect for offices, events, or home meals.</p>
+          <ul class="space-y-2 mb-6">
+            <li class="flex items-start">
+              <i class="fas fa-check text-success mt-1 mr-2"></i>
+              <span>Temperature-controlled delivery</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-check text-success mt-1 mr-2"></i>
+              <span>Restaurant partnerships</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-check text-success mt-1 mr-2"></i>
+              <span>No minimum order</span>
+            </li>
+          </ul>
+          <div class="flex justify-between items-center pt-4 border-t border-gray-200">
+            <span class="font-bold text-primary">From ₦150</span>
+            <button class="text-primary font-medium hover:text-secondary transition-colors">Order Now <i class="fas fa-arrow-right ml-1"></i></button>
+          </div>
+        </div>
+        
+        <div class="feature-card rounded-2xl p-8 card-hover">
+          <div class="w-16 h-16 bg-gradient-to-r from-secondary to-accent rounded-2xl flex items-center justify-center mb-6">
+            <i class="fas fa-file-contract text-white text-2xl"></i>
+          </div>
+          <h3 class="text-2xl font-bold mb-3">Document Courier</h3>
+          <p class="text-gray-600 mb-6">Urgent document delivery with security and proof of delivery. Ideal for legal papers, contracts, and important files.</p>
+          <ul class="space-y-2 mb-6">
+            <li class="flex items-start">
+              <i class="fas fa-check text-success mt-1 mr-2"></i>
+              <span>Secure handling & tracking</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-check text-success mt-1 mr-2"></i>
+              <span>Signature confirmation</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-check text-success mt-1 mr-2"></i>
+              <span>Weatherproof packaging</span>
+            </li>
+          </ul>
+          <div class="flex justify-between items-center pt-4 border-t border-gray-200">
+            <span class="font-bold text-secondary">From ₦200</span>
+            <button class="text-secondary font-medium hover:text-accent transition-colors">Order Now <i class="fas fa-arrow-right ml-1"></i></button>
+          </div>
+        </div>
+        
+        <div class="feature-card rounded-2xl p-8 card-hover">
+          <div class="w-16 h-16 bg-gradient-to-r from-accent to-warning rounded-2xl flex items-center justify-center mb-6">
+            <i class="fas fa-box-open text-white text-2xl"></i>
+          </div>
+          <h3 class="text-2xl font-bold mb-3">Package Delivery</h3>
+          <p class="text-gray-600 mb-6">Reliable parcel delivery for small to medium packages. Perfect for e-commerce, gifts, and personal items.</p>
+          <ul class="space-y-2 mb-6">
+            <li class="flex items-start">
+              <i class="fas fa-check text-success mt-1 mr-2"></i>
+              <span>Weight up to 5kg</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-check text-success mt-1 mr-2"></i>
+              <span>Same-day delivery</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-check text-success mt-1 mr-2"></i>
+              <span>Insurance available</span>
+            </li>
+          </ul>
+          <div class="flex justify-between items-center pt-4 border-t border-gray-200">
+            <span class="font-bold text-accent">From ₦250</span>
+            <button class="text-accent font-medium hover:text-warning transition-colors">Order Now <i class="fas fa-arrow-right ml-1"></i></button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="mt-20 text-center">
+        <div class="inline-block bg-gradient-to-r from-primary to-secondary text-white px-8 py-4 rounded-2xl shadow-lg">
+          <h3 class="text-2xl font-bold mb-2">Download Our App</h3>
+          <p class="mb-4">Get the fastest delivery experience with real-time tracking</p>
+          <div class="flex justify-center space-x-4">
+            <button class="bg-black px-6 py-3 rounded-xl flex items-center space-x-2 hover:bg-gray-800 transition-colors">
+              <i class="fab fa-apple text-white text-2xl"></i>
+              <div class="text-left">
+                <div class="text-xs">Download on the</div>
+                <div class="font-bold">App Store</div>
+              </div>
+            </button>
+            <button class="bg-black px-6 py-3 rounded-xl flex items-center space-x-2 hover:bg-gray-800 transition-colors">
+              <i class="fab fa-google-play text-white text-2xl"></i>
+              <div class="text-left">
+                <div class="text-xs">GET IT ON</div>
+                <div class="font-bold">Google Play</div>
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="py-16 px-4 md:px-8 bg-gradient-to-br from-blue-50 to-purple-50">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div class="stat-card rounded-xl p-6 text-center border border-blue-100">
+          <div class="text-primary text-4xl font-bold mb-2">15 min</div>
+          <div class="text-gray-600">Avg. Delivery Time</div>
+        </div>
+        <div class="stat-card rounded-xl p-6 text-center border border-purple-100">
+          <div class="text-secondary text-4xl font-bold mb-2">98%</div>
+          <div class="text-gray-600">On-Time Rate</div>
+        </div>
+        <div class="stat-card rounded-xl p-6 text-center border border-pink-100">
+          <div class="text-accent text-4xl font-bold mb-2">500+</div>
+          <div class="text-gray-600">Daily Orders</div>
+        </div>
+        <div class="stat-card rounded-xl p-6 text-center border border-green-100">
+          <div class="text-green-500 text-4xl font-bold mb-2">4.9/5</div>
+          <div class="text-gray-600">Customer Rating</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section id="pricing" class="py-20 px-4 md:px-8 bg-white/50">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="section-title text-4xl font-bold text-gray-900 mb-4">Simple, Transparent Pricing</h2>
+        <p class="text-gray-600 text-lg max-w-2xl mx-auto">No hidden fees, no surge pricing - just fair rates for fast delivery</p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div class="price-card rounded-2xl p-8">
+          <div class="text-center mb-6">
+            <h3 class="text-2xl font-bold">Standard</h3>
+            <p class="text-gray-600">Perfect for quick errands</p>
+          </div>
+          <div class="text-center mb-8">
+            <div class="text-5xl font-bold text-primary mb-2">₦150</div>
+            <div class="text-gray-500">First 2km</div>
+          </div>
+          <ul class="space-y-3 mb-8">
+            <li class="flex items-center">
+              <i class="fas fa-check text-green-500 mr-3"></i>
+              <span>Up to 1km free</span>
+            </li>
+            <li class="flex items-center">
+              <i class="fas fa-check text-green-500 mr-3"></i>
+              <span>₦75 per additional km</span>
+            </li>
+            <li class="flex items-center">
+              <i class="fas fa-check text-green-500 mr-3"></i>
+              <span>Delivery within 30 mins</span>
+            </li>
+            <li class="flex items-center">
+              <i class="fas fa-check text-green-500 mr-3"></i>
+              <span>Basic tracking</span>
+            </li>
+          </ul>
+          <button class="w-full bg-primary/10 text-primary font-medium py-3 rounded-xl hover:bg-primary/20 transition-colors">
+            Choose Plan
+          </button>
+        </div>
+        
+        <div class="price-card popular rounded-2xl p-8 border-2 border-primary">
+          <div class="absolute top-0 right-0 bg-gradient-to-r from-primary to-secondary text-white px-4 py-1 rounded-bl-xl rounded-tr-xl font-bold">
+            MOST POPULAR
+          </div>
+          <div class="text-center mb-6">
+            <h3 class="text-2xl font-bold">Express</h3>
+            <p class="text-gray-600">Fastest delivery option</p>
+          </div>
+          <div class="text-center mb-8">
+            <div class="text-5xl font-bold text-secondary mb-2">₦250</div>
+            <div class="text-gray-500">First 2km</div>
+          </div>
+          <ul class="space-y-3 mb-8">
+            <li class="flex items-center">
+              <i class="fas fa-check text-green-500 mr-3"></i>
+              <span>Priority runner assignment</span>
+            </li>
+            <li class="flex items-center">
+              <i class="fas fa-check text-green-500 mr-3"></i>
+              <span>₦100 per additional km</span>
+            </li>
+            <li class="flex items-center">
+              <i class="fas fa-check text-green-500 mr-3"></i>
+              <span>Delivery within 15 mins</span>
+            </li>
+            <li class="flex items-center">
+              <i class="fas fa-check text-green-500 mr-3"></i>
+              <span>Real-time GPS tracking</span>
+            </li>
+            <li class="flex items-center">
+              <i class="fas fa-check text-green-500 mr-3"></i>
+              <span>Proof of delivery photos</span>
+            </li>
+          </ul>
+          <button class="w-full bg-gradient-to-r from-primary to-secondary text-white font-bold py-3 rounded-xl hover:opacity-90 transition-all shadow-lg">
+            Choose Plan
+          </button>
+        </div>
+        
+        <div class="price-card rounded-2xl p-8">
+          <div class="text-center mb-6">
+            <h3 class="text-2xl font-bold">Business</h3>
+            <p class="text-gray-600">For teams and companies</p>
+          </div>
+          <div class="text-center mb-8">
+            <div class="text-5xl font-bold text-pink-500 mb-2">₦400</div>
+            <div class="text-gray-500">First 2km</div>
+          </div>
+          <ul class="space-y-3 mb-8">
+            <li class="flex items-center">
+              <i class="fas fa-check text-green-500 mr-3"></i>
+              <span>Dedicated account manager</span>
+            </li>
+            <li class="flex items-center">
+              <i class="fas fa-check text-green-500 mr-3"></i>
+              <span>Bulk order discounts</span>
+            </li>
+            <li class="flex items-center">
+              <i class="fas fa-check text-green-500 mr-3"></i>
+              <span>API integration</span>
+            </li>
+            <li class="flex items-center">
+              <i class="fas fa-check text-green-500 mr-3"></i>
+              <span>Monthly invoicing</span>
+            </li>
+            <li class="flex items-center">
+              <i class="fas fa-check text-green-500 mr-3"></i>
+              <span>Detailed analytics</span>
+            </li>
+          </ul>
+          <button class="w-full bg-pink-500/10 text-pink-500 font-medium py-3 rounded-xl hover:bg-pink-500/20 transition-colors">
+            Choose Plan
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="py-20 px-4 md:px-8 bg-gradient-to-br from-gray-50 to-white">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="section-title text-4xl font-bold text-gray-900 mb-4">What Our Customers Say</h2>
+        <p class="text-gray-600 text-lg max-w-2xl mx-auto">Don't just take our word for it - hear from our satisfied customers</p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="testimonial-card rounded-xl p-8 card-hover">
+          <div class="flex text-yellow-400 mb-4">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <p class="text-gray-600 italic mb-6">"I needed urgent documents delivered across Lagos for a court case. RunQuick delivered in 12 minutes! The runner was professional and even took photos as proof of delivery. Lifesaver!"</p>
+          <div class="flex items-center">
+            <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+              <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Customer" class="w-full h-full object-cover">
+            </div>
+            <div>
+              <h4 class="font-bold">Bola Adeola</h4>
+              <p class="text-gray-500 text-sm">Legal Consultant</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="testimonial-card rounded-xl p-8 card-hover">
+          <div class="flex text-yellow-400 mb-4">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <p class="text-gray-600 italic mb-6">"As a small restaurant owner, RunQuick has been crucial for our delivery service. Their runners are reliable, handle food with care, and customers love the fast delivery times. Highly recommend!"</p>
+          <div class="flex items-center">
+            <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+              <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Customer" class="w-full h-full object-cover">
+            </div>
+            <div>
+              <h4 class="font-bold">Tunde Ojo</h4>
+              <p class="text-gray-500 text-sm">Restaurant Owner</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="testimonial-card rounded-xl p-8 card-hover">
+          <div class="flex text-yellow-400 mb-4">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <p class="text-gray-600 italic mb-6">"I was skeptical about a running delivery service, but RunQuick proved me wrong. They delivered my phone charger when my battery was at 1%! The app is intuitive and tracking is accurate. Now my go-to delivery app."</p>
+          <div class="flex items-center">
+            <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+              <img src="https://images.unsplash.com/photo-1544005313-94cdf0b7a3cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Customer" class="w-full h-full object-cover">
+            </div>
+            <div>
+              <h4 class="font-bold">Aisha Mohammed</h4>
+              <p class="text-gray-500 text-sm">University Student</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="mt-16 text-center">
+        <div class="inline-flex items-center bg-gradient-to-r from-primary to-secondary text-white px-8 py-4 rounded-2xl shadow-lg">
+          <i class="fas fa-quote-left text-4xl mr-4 opacity-50"></i>
+          <div class="text-left">
+            <div class="text-2xl font-bold">"RunQuick revolutionized our delivery logistics. We've reduced delivery times by 65% and increased customer satisfaction by 40%."</div>
+            <div class="mt-2 font-medium">— Segun Bankole, CEO of TechSolutions NG</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Order Form -->
+  <section id="order" class="py-20 px-4 md:px-8 bg-gradient-to-r from-primary to-secondary">
+    <div class="max-w-4xl mx-auto bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl overflow-hidden">
+      <div class="p-8 md:p-12">
+        <div class="text-center mb-10">
+          <h2 class="text-3xl font-bold text-gray-900 mb-3">Place Your Order Now</h2>
+          <p class="text-gray-600">Get your package delivered in under 15 minutes</p>
+        </div>
+        
+        <form class="space-y-6">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label class="block text-gray-700 mb-2 font-medium">Pickup Location</label>
+              <div class="relative">
+                <i class="fas fa-map-marker-alt absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                <input type="text" placeholder="Enter pickup address" class="w-full pl-12 pr-4 py-4 rounded-xl border border-gray-300 focus:ring-2 focus:ring-primary focus:border-transparent transition-all">
+              </div>
+            </div>
+            <div>
+              <label class="block text-gray-700 mb-2 font-medium">Delivery Location</label>
+              <div class="relative">
+                <i class="fas fa-truck-loading absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                <input type="text" placeholder="Enter delivery address" class="w-full pl-12 pr-4 py-4 rounded-xl border border-gray-300 focus:ring-2 focus:ring-primary focus:border-transparent transition-all">
+              </div>
+            </div>
+            <div>
+              <label class="block text-gray-700 mb-2 font-medium">Package Type</label>
+              <select class="w-full px-4 py-4 rounded-xl border border-gray-300 focus:ring-2 focus:ring-primary focus:border-transparent transition-all bg-white">
+                <option>Documents (envelope)</option>
+                <option>Small Package (up to 1kg)</option>
+                <option>Medium Package (1-3kg)</option>
+                <option>Food Order</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-gray-700 mb-2 font-medium">Delivery Option</label>
+              <select class="w-full px-4 py-4 rounded-xl border border-gray-300 focus:ring-2 focus:ring-primary focus:border-transparent transition-all bg-white">
+                <option>Standard (30 mins) - ₦150</option>
+                <option selected>Express (15 mins) - ₦250</option>
+                <option>Priority (8 mins) - ₦400</option>
+              </select>
+            </div>
+          </div>
+          
+          <div>
+            <label class="block text-gray-700 mb-2 font-medium">Additional Instructions</label>
+            <textarea placeholder="Special instructions for the runner (optional)" rows="3" class="w-full px-4 py-4 rounded-xl border border-gray-300 focus:ring-2 focus:ring-primary focus:border-transparent transition-all"></textarea>
+          </div>
+          
+          <div class="flex items-center space-x-3 bg-blue-50 p-4 rounded-xl">
+            <i class="fas fa-shield-alt text-blue-500 text-2xl"></i>
+            <div class="text-gray-700">
+              <span class="font-medium">All deliveries are insured</span> up to ₦50,000. Runners are vetted professionals.
+            </div>
+          </div>
+          
+          <button type="submit" class="w-full bg-gradient-to-r from-primary to-secondary text-white font-bold py-5 rounded-xl text-lg hover:opacity-90 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
+            <span class="flex items-center justify-center">
+              <i class="fas fa-running mr-3"></i>
+              <span>Find a Runner • Estimated Price: ₦250</span>
+            </span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Map Section -->
+  <section id="track" class="py-20 px-4 md:px-8">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="section-title text-4xl font-bold text-gray-900 mb-4">Live Delivery Tracking</h2>
+        <p class="text-gray-600 text-lg max-w-2xl mx-auto">See our runners in action across Lagos</p>
+      </div>
+      
+      <div class="map-container rounded-2xl overflow-hidden h-[500px] relative">
+        <div class="absolute inset-0 bg-gradient-to-br from-blue-900 to-black opacity-70 flex flex-col items-center justify-center text-white">
+          <div class="text-center">
+            <div class="text-7xl font-bold mb-6">LAGOS</div>
+            <p class="text-xl max-w-2xl mx-auto">Real-time tracking coming soon! For now, track your orders directly in our mobile app</p>
+            <div class="mt-8 flex space-x-4">
+              <button class="bg-white text-primary font-bold px-6 py-3 rounded-xl flex items-center space-x-2 hover:bg-gray-100 transition-colors">
+                <i class="fab fa-apple"></i>
+                <span>App Store</span>
+              </button>
+              <button class="bg-white text-primary font-bold px-6 py-3 rounded-xl flex items-center space-x-2 hover:bg-gray-100 transition-colors">
+                <i class="fab fa-google-play"></i>
+                <span>Google Play</span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="absolute bottom-8 left-8 bg-white/90 backdrop-blur-sm p-6 rounded-xl shadow-xl">
+          <div class="flex items-center space-x-4">
+            <div class="w-4 h-4 rounded-full bg-red-500 pulse-ring"></div>
+            <div>
+              <div class="font-bold">12 runners active</div>
+              <div class="text-gray-600">Currently making deliveries</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="mt-16 text-center">
+        <h3 class="text-2xl font-bold mb-4">Coverage Areas</h3>
+        <div class="flex flex-wrap justify-center gap-3">
+          <span class="bg-blue-100 text-primary px-4 py-1 rounded-full font-medium">Lagos Island</span>
+          <span class="bg-blue-100 text-primary px-4 py-1 rounded-full font-medium">Victoria Island</span>
+          <span class="bg-blue-100 text-primary px-4 py-1 rounded-full font-medium">Lekki</span>
+          <span class="bg-blue-100 text-primary px-4 py-1 rounded-full font-medium">Ikeja</span>
+          <span class="bg-blue-100 text-primary px-4 py-1 rounded-full font-medium">Surulere</span>
+          <span class="bg-blue-100 text-primary px-4 py-1 rounded-full font-medium">Yaba</span>
+          <span class="bg-blue-100 text-primary px-4 py-1 rounded-full font-medium">Festac</span>
+          <span class="bg-blue-100 text-primary px-4 py-1 rounded-full font-medium">Ajah</span>
+        </div>
+        <p class="mt-6 text-gray-600">Expanding to Abuja, Port Harcourt and other major cities soon</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-gray-300 py-16 px-4 md:px-8">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
+        <div class="md:col-span-1">
+          <div class="flex items-center space-x-3 mb-6">
+            <div class="bg-gradient-to-r from-primary to-secondary p-2 rounded-xl">
+              <i class="fas fa-shoe-prints text-white text-2xl"></i>
+            </div>
+            <span class="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">RunQuick</span>
+          </div>
+          <p class="mb-6 max-w-xs">
+            Nigeria's fastest running delivery service. Delivering packages, documents, and food in record time with professional runners.
+          </p>
+          <div class="flex space-x-4">
+            <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary transition-colors">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary transition-colors">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary transition-colors">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary transition-colors">
+              <i class="fab fa-whatsapp"></i>
+            </a>
+          </div>
+        </div>
+        
+        <div class="md:col-span-1">
+          <h3 class="text-white font-bold text-lg mb-6">Quick Links</h3>
+          <ul class="space-y-3">
+            <li><a href="#" class="hover:text-primary transition-colors">Home</a></li>
+            <li><a href="#how-it-works" class="hover:text-primary transition-colors">How It Works</a></li>
+            <li><a href="#services" class="hover:text-primary transition-colors">Services</a></li>
+            <li><a href="#pricing" class="hover:text-primary transition-colors">Pricing</a></li>
+            <li><a href="#track" class="hover:text-primary transition-colors">Track Order</a></li>
+            <li><a href="#" class="hover:text-primary transition-colors">Download App</a></li>
+          </ul>
+        </div>
+        
+        <div class="md:col-span-1">
+          <h3 class="text-white font-bold text-lg mb-6">Services</h3>
+          <ul class="space-y-3">
+            <li><a href="#" class="hover:text-primary transition-colors">Food Delivery</a></li>
+            <li><a href="#" class="hover:text-primary transition-colors">Document Courier</a></li>
+            <li><a href="#" class="hover:text-primary transition-colors">Package Delivery</a></li>
+            <li><a href="#" class="hover:text-primary transition-colors">Business Solutions</a></li>
+            <li><a href="#" class="hover:text-primary transition-colors">Enterprise API</a></li>
+            <li><a href="#" class="hover:text-primary transition-colors">Runner Program</a></li>
+          </ul>
+        </div>
+        
+        <div class="md:col-span-1">
+          <h3 class="text-white font-bold text-lg mb-6">Contact Us</h3>
+          <ul class="space-y-4">
+            <li class="flex items-start">
+              <i class="fas fa-map-marker-alt text-primary mt-1 mr-3"></i>
+              <span>15 Marina Street, Lagos Mainland, Lagos, Nigeria</span>
+            </li>
+            <li class="flex items-center">
+              <i class="fas fa-phone-alt text-primary mr-3"></i>
+              <span>+234 803 123 4567</span>
+            </li>
+            <li class="flex items-center">
+              <i class="fas fa-envelope text-primary mr-3"></i>
+              <span>hello@runquick.ng</span>
+            </li>
+            <li class="flex items-center">
+              <i class="fas fa-clock text-primary mr-3"></i>
+              <span>24/7 Service</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="border-t border-gray-800 mt-16 pt-8 text-center text-gray-500">
+        <p>© 2023 RunQuick Delivery Services. All rights reserved.</p>
+        <div class="mt-4 flex justify-center space-x-6">
+          <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+          <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+          <a href="#" class="hover:text-white transition-colors">FAQ</a>
+          <a href="#" class="hover:text-white transition-colors">Careers</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Simple animation for elements on scroll
+    document.addEventListener('DOMContentLoaded', function() {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.animation = `slide-up 0.6s ease-out forwards`;
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      
+      // Observe elements with fade-up animation
+      document.querySelectorAll('.card-hover, .feature-card, .stat-card, .price-card, .testimonial-card, .step-card').forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        observer.observe(card);
+      });
+      
+      // Navbar scroll effect
+      window.addEventListener('scroll', function() {
+        const nav = document.querySelector('nav');
+        if (window.scrollY > 50) {
+          nav.classList.add('shadow-lg');
+          nav.classList.remove('bg-white/80');
+          nav.classList.add('bg-white');
+        } else {
+          nav.classList.remove('shadow-lg');
+          nav.classList.add('bg-white/80');
+          nav.classList.remove('bg-white');
+        }
+      });
+      
+      // Initialize animations on load
+      setTimeout(() => {
+        document.querySelector('.hero-bg').style.opacity = '1';
+      }, 100);
+    });
+  </script>
+</body>
+</html>
